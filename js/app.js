@@ -23,7 +23,33 @@ var StorageManager = {
         var data = localStorage.getItem(this.STORAGE_KEY);
         if (data) {
             try {
-                return JSON.parse(data);
+                var parsedData = JSON.parse(data);
+                
+                // 数据迁移：确保priceTypes有正确的单位
+                if (!parsedData.priceTypes || !Array.isArray(parsedData.priceTypes) || parsedData.priceTypes.length === 0) {
+                    parsedData.priceTypes = this.getInitialData().priceTypes;
+                } else {
+                    // 检查并修复缺少单位的单价类型
+                    var defaultPriceTypes = this.getInitialData().priceTypes;
+                    defaultPriceTypes.forEach(function(defaultType) {
+                        var exists = false;
+                        parsedData.priceTypes.forEach(function(existingType) {
+                            if (existingType.name === defaultType.name) {
+                                exists = true;
+                                // 如果缺少单位，添加默认单位
+                                if (!existingType.unit) {
+                                    existingType.unit = defaultType.unit;
+                                }
+                            }
+                        });
+                        // 如果不存在，添加新的单价类型
+                        if (!exists) {
+                            parsedData.priceTypes.push(defaultType);
+                        }
+                    });
+                }
+                
+                return parsedData;
             } catch (e) {
                 console.error('解析数据失败:', e);
             }
