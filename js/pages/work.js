@@ -204,23 +204,37 @@ var WorkPage = {
         }
         
         var contract = StorageManager.getById('contracts', projectId);
-        if (!contract || !contract.prices) {
+        if (!contract) {
             UIUtils.showToast('项目不存在', 'error');
             return;
         }
         
-        // 查找单价
-        var price = null;
-        contract.prices.forEach(function(p) {
-            if (p.name === select.value) price = p;
-        });
-        
-        if (!price) {
-            UIUtils.showToast('该项目未配置该单价类型', 'warning');
-return;
+        // 获取单价类型信息（从全局单价类型配置中获取）
+        var priceType = null;
+        var priceTypes = StorageManager.getAllPriceTypes();
+        for (var i = 0; i < priceTypes.length; i++) {
+            if (priceTypes[i].name === select.value) {
+                priceType = priceTypes[i];
+                break;
+            }
         }
         
-        var amount = quantity * (price.unitPrice || 0);
+        if (!priceType) {
+            UIUtils.showToast('单价类型不存在', 'error');
+            return;
+        }
+        
+        // 查找项目的单价配置（用于获取单价金额）
+        var unitPrice = 0;
+        if (contract.prices && Array.isArray(contract.prices)) {
+            contract.prices.forEach(function(p) {
+                if (p.name === select.value) {
+                    unitPrice = p.unitPrice || 0;
+                }
+            });
+        }
+        
+        var amount = quantity * unitPrice;
         
         // 检查是否已添加
         var exists = false;
@@ -235,9 +249,9 @@ return;
         
         this.currentOutputItems.push({
             name: select.value,
-            unit: select.options[select.selectedIndex].dataset.unit || '次',
+            unit: priceType.unit || '次',
             quantity: quantity,
-            unitPrice: price.unitPrice || 0,
+            unitPrice: unitPrice,
             amount: amount
         });
         
