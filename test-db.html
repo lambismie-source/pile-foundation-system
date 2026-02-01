@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>测试Supabase连接</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { font-family: -apple-system, sans-serif; padding: 20px; max-width: 600px; margin: 0 auto; background: #f5f5f5; }
+        h1 { color: #333; }
+        .status { padding: 16px; background: #fff; border-radius: 8px; margin: 10px 0; }
+        .success { border-left: 4px solid #52c41a; color: #52c41a; }
+        .error { border-left: 4px solid #ff4d4f; color: #ff4d4f; }
+        .info { border-left: 4px solid #1890ff; color: #1890ff; }
+        pre { background: #f5f5f5; padding: 12px; border-radius: 4px; overflow-x: auto; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h1>测试 Supabase 数据库连接</h1>
+    <div id="result"></div>
+    
+    <script>
+        const { createClient } = supabase;
+        const client = createClient(
+            'https://fymwdwocxvnduyofwcvi.supabase.co',
+            'sb_publishable_gm6hXPqMEXFz_ZzjFaWHoQ_d-GOV48h'
+        );
+        
+        async function test() {
+            const result = document.getElementById('result');
+            
+            try {
+                // 测试连接
+                addStatus('正在连接 Supabase...', 'info');
+                
+                // 查询设备类型
+                const { data: types, error: tErr } = await client
+                    .from('equipment_types')
+                    .select('*');
+                
+                if (tErr) {
+                    addStatus('查询失败: ' + tErr.message, 'error');
+                    return;
+                }
+                
+                addStatus('✓ 连接成功！', 'success');
+                addStatus('设备类型数量: ' + (types?.length || 0), 'info');
+                
+                if (types && types.length > 0) {
+                    addStatus('设备类型列表:', 'info');
+                    result.innerHTML += '<pre>' + JSON.stringify(types, null, 2) + '</pre>';
+                } else {
+                    addStatus('设备类型为空，插入示例数据...', 'info');
+                    
+                    // 插入示例数据
+                    const { data: newTypes, error: insertErr } = await client
+                        .from('equipment_types')
+                        .insert([
+                            { name: '吊车' },
+                            { name: '货车' },
+                            { name: '桩基检测仪' },
+                            { name: '水泥块吊装设备' }
+                        ])
+                        .select();
+                    
+                    if (insertErr) {
+                        addStatus('插入失败: ' + insertErr.message, 'error');
+                    } else {
+                        addStatus('✓ 示例数据插入成功！', 'success');
+                        addStatus(JSON.stringify(newTypes, null, 2), 'info');
+                    }
+                }
+                
+            } catch (err) {
+                addStatus('错误: ' + err.message, 'error');
+            }
+        }
+        
+        function addStatus(msg, type) {
+            const div = document.createElement('div');
+            div.className = 'status ' + type;
+            div.textContent = msg;
+            document.getElementById('result').appendChild(div);
+        }
+        
+        test();
+    </script>
+</body>
+</html>

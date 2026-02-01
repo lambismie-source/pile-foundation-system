@@ -1,0 +1,1053 @@
+<body class="overflow-x-hidden min-h-screen text-gray-900 mobile-constraints">   <header class="header is-expand"> <div class="w-full nav-shadow"> <nav aria-label="主导航" class="nav-bar">  <div class="nav-logo"> <a href="/" class="flex items-center" aria-label="首页"> <img src="/static/astro/icon/logo.svg" alt="宝塔 logo" loading="eager" decoding="async" fetchpriority="auto" width="120" height="40" class="logo-img"> </a> </div>  <nav class="nav-main" role="navigation" aria-label="主导航菜单"> <ol class="nav-items"> <li class="nav-item" data-type="linux" data-disabled="false">   <a href="/new/product_linux.html" target="" class="nav-link"> 宝塔面板 </a> </li><li class="nav-item-dropdown" data-type="product" data-show-expand="true" data-disabled="false">   <a class="nav-link nav-link-dropdown" target="">产品与服务 <i class="fas fa-chevron-down nav-icon text-[10px]" aria-hidden="true"></i></a> </li><li class="nav-item" data-type="" data-disabled="false">   <a href="/new/ops.html" target="" class="nav-link"> 安全运维 </a> </li><li class="nav-item-dropdown" data-type="domain" data-show-expand="true" data-disabled="false">   <a href="/new/domain-register.html" class="nav-link nav-link-dropdown" target="">域名 <i class="fas fa-chevron-down nav-icon text-[10px]" aria-hidden="true"></i></a> </li><li class="nav-item-dropdown" data-type="ssl" data-show-expand="true" data-disabled="false">   <a href="/new/ssl.html" class="nav-link nav-link-dropdown" target="">SSL <i class="fas fa-chevron-down nav-icon text-[10px]" aria-hidden="true"></i></a> </li><li class="nav-item-dropdown" data-type="activity" data-show-expand="true" data-disabled="false">   <a href="/new/activity.html" class="nav-link nav-link-dropdown" target="">活动 <i class="fas fa-chevron-down nav-icon text-[10px]" aria-hidden="true"></i></a> </li><li class="nav-item" data-type="" data-disabled="false">   <a href="/new/pricing.html" target="" class="nav-link"> 价格 </a> </li><li class="nav-item-dropdown" data-type="cooperation" data-show-expand="true" data-disabled="false">   <a class="nav-link nav-link-dropdown" target="">合作与入驻 <i class="fas fa-chevron-down nav-icon text-[10px]" aria-hidden="true"></i></a> </li><li class="nav-item" data-type="" data-disabled="false">   <a href="/bbs/portal.php" target="_blank" class="nav-link"> 论坛 </a> </li><li class="nav-item nav-item-with-tips" data-type="" data-disabled="false">  <div class="nav-tips">免费IP证书</div> <a href="/new/download.html" target="" class="nav-link"> 下载安装 </a> </li> </ol> </nav>  <div id="nav-auth" class="nav-auth" style="display: flex;">  <div class="h-full flex items-center content-creation-btn"> <a href="https://www.bt.cn/new/content-creation" class="flex items-center px-3 py-1.5 bg-gradient-to-r from-orange-50 to-amber-50 text-orange-600 rounded-full border border-orange-200 hover:shadow-sm hover:border-orange-300 transition-all text-sm font-medium"> <i class="fa fa-bullhorn mr-1.5 text-orange-500" aria-hidden="true"></i> <span>支持我们，免费获取专业版</span> <span class="ml-2 px-1.5 py-0.5 bg-orange-500 text-white text-[10px] rounded leading-none">新</span> </a> </div>  <div class="h-full support-btn-container"> <a href="javascript:;" class="btn btn-support support-btn h-full px-[.75rem] !text-black font-medium !gap-[.2rem]" id="support-btn-tooltip" aria-describedby="" aria-expanded="false"> <i class="fab fa-weixin text-xs text-[#555]" aria-hidden="true"></i> 客服 </a>  <div class="customer-service" id="support-qr-content"> <div class="qr-header"> <i class="fab fa-weixin wechat-icon"></i> <h4 class="qr-title">添加客服微信</h4> </div> <div class="qr-image-container"> <img src="/static/astro/images/wechat/wechat-all.png" alt="客服微信二维码" loading="lazy" decoding="async" fetchpriority="auto" width="130" height="130" class="qr-image"> </div> <div class="qr-footer"> <i class="fas fa-qrcode scan-icon"></i> <span class="text-xs">使用微信扫一扫</span> </div> <div class="text-xs text-center">工作时间：9:10-18:00</div> </div> </div>  <div class="h-full"> <a href="https://docs.bt.cn/" target="_blank" class="btn btn-outline btn-docs h-full px-[.75rem] !text-black font-medium !gap-[.2rem] border-none"> <i class="fas fa-book text-xs text-[#555]" aria-hidden="true"></i>
+文档
+</a> </div>    <a href="/admin/profe_ee" class="h-full rounded-none border-none btn btn-admin admin-btn" id="admin-entry" style="display: none;"> <i class="fas fa-user admin-icon" aria-hidden="true"></i>
+用户后台
+</a>   <div id="auth-buttons" class="h-full auth-group" style="display: flex;"> <a href="/login" class="btn btn-outline font-medium auth-btn h-full border-none rounded-none"> 登录 </a><a href="/register" class="btn btn-solid font-medium auth-btn h-full border-none rounded-none"> 注册 </a> </div>  </div>  <div class="mobile-menu"> <details class="mobile-menu-container">  <summary class="mobile-summary"> <i class="fas fa-bars mobile-icon"></i> </summary>  <div class="mobile-menu-overlay"></div> <div class="mobile-menu-content">  <div class="mobile-menu-header"> <div class="mobile-menu-logo"> <img src="/static/astro/icon/logo.svg" alt="BT Astro" loading="eager" decoding="async" fetchpriority="auto" width="100" height="32" class="mobile-logo-img"> </div> <button class="mobile-menu-close" type="button" aria-label="关闭菜单"> <i class="fas fa-times"></i> </button> </div> <div class="mobile-nav-items"> <div class="mobile-nav-item">  <a href="/new/product_linux.html" class="mobile-nav-link"> 宝塔面板 </a> </div><div class="mobile-dropdown-section" data-mobile-dropdown="product"> <button class="mobile-dropdown-toggle" type="button" aria-expanded="false" data-dropdown-type="product"> <span class="mobile-dropdown-title">产品与服务</span> <i class="fas fa-chevron-down mobile-dropdown-icon" aria-hidden="true"></i> </button> <div class="mobile-dropdown-content" style="display: none;"><a href="/new/product_linux.html" class="mobile-nav-sub-link" target="">宝塔Linux面板</a><a href="/new/product_windows.html" class="mobile-nav-sub-link" target="">宝塔Windows面板</a><a href="/new/product_pc.html" class="mobile-nav-sub-link" target="">堡塔多机管理</a><a href="/new/product_cloud.html" class="mobile-nav-sub-link" target="">堡塔云控</a><a href="/new/product_ssh.html" class="mobile-nav-sub-link" target="">堡塔SSH终端</a><a href="/new/product_app.html" class="mobile-nav-sub-link" target="">堡塔APP</a><a href="/new/aawaf.html" class="mobile-nav-sub-link" target="">堡塔云WAF</a><a href="/new/product_nginx_firewall.html" class="mobile-nav-sub-link" target="">Nginx智能防火墙</a><a href="/new/product_website_total.html" class="mobile-nav-sub-link" target="">网站智能实时监控</a><a href="/new/ops.html" class="mobile-nav-sub-link" target="">安全运维</a></div> </div><div class="mobile-nav-item">  <a href="/new/ops.html" class="mobile-nav-link"> 安全运维 </a> </div><div class="mobile-dropdown-section" data-mobile-dropdown="domain"> <button class="mobile-dropdown-toggle" type="button" aria-expanded="false" data-dropdown-type="domain"> <span class="mobile-dropdown-title">域名</span> <i class="fas fa-chevron-down mobile-dropdown-icon" aria-hidden="true"></i> </button> <div class="mobile-dropdown-content" style="display: none;"><a href="/new/domain-register.html" class="mobile-nav-sub-link" target="">域名注册</a><a href="/domain/domain/transfer" class="mobile-nav-sub-link" target="">域名转入</a><a href="/new/domain-whois.html" class="mobile-nav-sub-link" target="">Whois查询</a></div> </div><div class="mobile-dropdown-section" data-mobile-dropdown="ssl"> <button class="mobile-dropdown-toggle" type="button" aria-expanded="false" data-dropdown-type="ssl"> <span class="mobile-dropdown-title">SSL</span> <i class="fas fa-chevron-down mobile-dropdown-icon" aria-hidden="true"></i> </button> <div class="mobile-dropdown-content" style="display: none;"><a href="/new/ssl.html" class="mobile-nav-sub-link" target="">SSL证书</a><a href="/new/ssl-promo.html" class="mobile-nav-sub-link" target="">免费领取商用SSL证书</a></div> </div><div class="mobile-dropdown-section" data-mobile-dropdown="activity"> <button class="mobile-dropdown-toggle" type="button" aria-expanded="false" data-dropdown-type="activity"> <span class="mobile-dropdown-title">活动</span> <i class="fas fa-chevron-down mobile-dropdown-icon" aria-hidden="true"></i> </button> <div class="mobile-dropdown-content" style="display: none;"><a href="/new/ltd_trial.html" class="mobile-nav-sub-link" target="">免费体验宝塔Linux面板企业版</a><a href="/new/promotion.html" class="mobile-nav-sub-link" target="">零门槛推广计划，赚取丰厚奖励</a><a href="/new/integral.html" class="mobile-nav-sub-link" target="">宝塔币商城</a><a href="https://docs.bt.cn/notices/free-aliyun-esa-plan" class="mobile-nav-sub-link" target="_blank">宝塔联合阿里云ESA送免费CDN套餐</a><a href="/1111.html" class="mobile-nav-sub-link" target="">双十一返现入口</a><a href="https://cloud.tencent.com/act/pro/eofreeplan-baota" class="mobile-nav-sub-link" target="_blank">宝塔x腾讯云赠送免费版Edgeone套餐</a><a href="/new/activity.html" class="mobile-nav-sub-link" target="">查看更多</a><a href="/new/student.html" class="mobile-nav-sub-link" target="">学生砺行计划</a><a href="/new/content-creation.html" class="mobile-nav-sub-link" target="">发布内容领取丰厚奖励</a></div> </div><div class="mobile-nav-item">  <a href="/new/pricing.html" class="mobile-nav-link"> 价格 </a> </div><div class="mobile-dropdown-section" data-mobile-dropdown="cooperation"> <button class="mobile-dropdown-toggle" type="button" aria-expanded="false" data-dropdown-type="cooperation"> <span class="mobile-dropdown-title">合作与入驻</span> <i class="fas fa-chevron-down mobile-dropdown-icon" aria-hidden="true"></i> </button> <div class="mobile-dropdown-content" style="display: none;"><a href="https://www.bt.cn/admin/invite" class="mobile-nav-sub-link" target="">个人或开发者推广</a><a href="/new/partner.html" class="mobile-nav-sub-link" target="">IDC合作推广</a><a href="https://www.bt.cn/admin/invite" class="mobile-nav-sub-link" target="">拉新用户奖励</a><a href="/developer" class="mobile-nav-sub-link" target="_blank">软件商店一键部署入驻</a></div> </div><div class="mobile-nav-item">  <a href="/bbs/portal.php" class="mobile-nav-link"> 论坛 </a> </div><div class="mobile-nav-item mobile-nav-item-with-tips"> <div class="mobile-nav-tips">免费IP证书</div> <a href="/new/download.html" class="mobile-nav-link"> 下载安装 </a> </div> </div>  <div class="mobile-auth-section">  <div id="mobile-admin-entry" class="mobile-admin-btn-container" style="display: none;"> <a href="/admin/profe_ee" class="btn btn-admin mobile-admin-btn"> <i class="fas fa-user admin-icon" aria-hidden="true"></i>
+管理后台
+</a> </div>  <div id="mobile-auth-buttons" class="mobile-auth-buttons" style="display: flex;"> <a href="/login" class="btn btn-outline mobile-auth-btn"> 登录 </a><a href="/register" class="btn btn-solid mobile-auth-btn"> 注册 </a> </div> </div> </div> </details> </div> </nav> </div> <div class="w-full nav-expand" id="nav-expand" style="display: none;"> <div class="max-w-[1400px] mx-auto h-full bg-white flex"> <div class="nav-introduction"> <div class="nav-intro-content" id="nav-intro-content"> <span class="nav-intro-title">产品</span> <p class="nav-intro-description">
+通过技术优化追求极致性价比，选择满足您业务需要的宝塔产品。
+</p> </div> </div> <div class="nav-menu" id="nav-menu-content"> <div class="flex-1 py-4"> <div class="nav-menu-title">运维产品</div> <div class="nav-menu-ul"> <div class="nav-menu-item" data-intro="linux">宝塔Linux面板</div> <div class="nav-menu-item" data-intro="windows">宝塔Windows面板</div> <div class="nav-menu-item" data-intro="linux">堡塔多机管理</div> <div class="nav-menu-item" data-intro="waf">堡塔云WAF</div> <div class="nav-menu-item" data-intro="linux">堡塔云控</div> <div class="nav-menu-item" data-intro="linux">堡塔SSH终端</div> </div> </div> <div class="flex-1 py-4"> <div class="nav-menu-title">网站安全产品</div> <div class="nav-menu-ul"> <div class="nav-menu-item" data-intro="waf">堡塔云WAF</div> <div class="nav-menu-item" data-intro="monitor">Nginx智能防火墙</div> <div class="nav-menu-item" data-intro="monitor">网站智能实时监控</div> <div class="nav-menu-item" data-intro="monitor">文件防篡改（内核级）</div> <div class="nav-menu-item" data-intro="monitor">PHP安全防护（内核级）</div> <div class="nav-menu-item" data-intro="monitor">系统入侵防御（内核级）</div> </div> </div> <div class="flex-1 py-4"></div> <div class="flex-1 py-4"></div> </div> </div> </div> </header> <script type="module" src="/static/astro/js/Header.astro_astro_type_script_index_0_lang.js?version=1769846721"></script> <main class="body-main">   <div id="carousel" aria-roledescription="carousel" data-dir="horizontal" class="relative w-full overflow-hidden carousel-box" data-astro-cid-rdgpvfyk=""> <div id="slides" class="h-full flex transition-transform ease-in-out will-change-transform" style="transition-duration: 500ms; transform: translateX(-100%);" data-astro-cid-rdgpvfyk=""><div class="slide flex-none w-full min-w-full h-full flex items-center justify-center relative bg-black" style="--carousel-fit: cover; opacity: 0;" data-index="2" data-clone="last">  <div class="max-w-[1400px] w-full mx-auto absolute top-[150px] max-[1400px]:top-[100px] max-lg:top-[50px] max-md:top-[30px] left-[50%] z-10 transform translate-x-[-50%] px-[50px] max-[1400px]:px-12 max-lg:px-6 max-md:px-3"> <h3 class="mb-4 max-md:mb-0 text-4xl max-[1400px]:text-4xl max-lg:text-3xl max-md:text-2xl max-sm:text-2xl font-bold text-white"> <span class="text-bt">SSL证书</span> 安全防护 为您的网站保驾护航
+</h3> <div class="mb-6 text-sm max-[1400px]:text-xs max-lg:text-xs max-md:text-xs max-sm:text-xs max-xs:text-xs text-gray-300 max-[576px]:hidden">
+提供多品牌SSL证书服务，支持DV、OV、EV等多种验证级别，为您的网站数据传输提供银行级加密保护。<br>
+专业团队技术支持，快速部署，安全可靠
+</div> <div class="text-sm max-[1400px]:text-xs max-lg:text-xs max-md:text-xs max-sm:text-xs max-xs:text-xs text-gray-300 mb-6 hidden max-[576px]:block">
+提供多品牌SSL证书服务，支持多种验证级别，为网站数据传输提供安全保护
+</div> <div class="flex"> <a class="btn btn-large btn-primary btn-round px-8 mr-4 font-bold bg-gradient-download transition-all hover:scale-[1.2] inline-flex items-center max-[1200px]:px-4 max-[1200px]:py-2 max-[1200px]:text-sm" href="/new/ssl.html" target="_blank" rel="noopener noreferrer">
+查看SSL产品
+</a> <button class="btn btn-large btn-default btn-round px-8 font-bold border-none max-[1200px]:px-4 max-[1200px]:py-2 max-[1200px]:text-sm" type="button">
+立即咨询
+</button> </div> </div> <div class="w-[1400px] max-[1400px]:w-full h-full flex items-center justify-center relative mx-auto"> <img src="/static/astro/images/home/banner-1/banner-bg-3.png" draggable="false" alt="证书管理" loading="eager" decoding="async" fetchpriority="auto" width="1440" height="600" class="home-banner-images"> <img src="/static/astro/images/home/banner-1/banner-ssl-overview.png" draggable="false" alt="证书管理" loading="eager" decoding="async" fetchpriority="auto" width="900" height="300" class="absolute right-[10px] bottom-0 max-[1400px]:right-[10px] max-lg:right-[5px] max-md:right-[0] max-sm:right-[-10px] max-xs:right-[-20px] max-[1400px]:w-[600px] max-lg:w-[500px] max-md:w-[400px] max-sm:w-[300px] max-xs:w-[200px]"> </div>  </div>   <div class="slide flex-none w-full min-w-full h-full flex items-center justify-center relative overflow-hidden bg-[#FDFBFE]" style="--carousel-fit:cover;" data-index="0">  <div class="home-banner-header"> <div class="flex flex-col items-center max-md:text-center xl:mb-[1rem] mb-[1.2rem] max-sm:mb-[.6rem]"> <h1 class="xl:text-[56px] lg:text-[48px] md:text-[40px] sm:text-[32px] max-sm:text-[22px] font-bold flex items-center justify-center">
+宝塔，<span class="text-bt">安全高效</span>的服务器运维面板
+<img class="ml-4 max-sm:w-[18px] w-[40px] max-lg:ml-2" src="/static/astro/images/home/free-icon.png"> </h1> <div class="xl:text-[16px] lg:text-[14px] max-sm:px-[5%] text-[12px] text-[#666]">
+全球超2000万台服务器安装宝塔，近300万注册用户使用宝塔，持续更新维护9年值得信赖
+</div> </div> <div class="home-banner-btn-group"> <a id="home-install-btn" class="btn btn-super-large btn-primary btn-round font-bold home-banner-btn bg-gradient-download transition-all inline-flex items-center gap-2" href="/new/download.html" target="_blank" rel="noopener noreferrer"> <span class="label">立即免费安装宝塔面板</span> <i class="fas fa-download install-icon" aria-hidden="true"></i> </a> <a class="flex-col gap-0 font-bold !leading-[1.4] not-bg text-bt banner-link border-b pb-[5px]" href="javascript:void(0)" id="home-service-btn" aria-describedby="" aria-expanded="false"> <div class="main-title text-[16px]">宝塔1v1安全运维服务</div> <div class="mobile-title">运维服务</div> </a> </div> </div>  <div class="customer-service" id="index-support-qr-content" style="display: none;"> <div class="qr-header"> <i class="fab fa-weixin wechat-icon"></i> <h4 class="qr-title">添加客服微信</h4> </div> <div class="qr-image-container"> <img src="/static/astro/images/wechat/wechat-all.png" alt="客服微信二维码" loading="lazy" decoding="async" fetchpriority="auto" width="130" height="130" class="qr-image"> </div> <div class="qr-footer"> <i class="fas fa-qrcode scan-icon"></i> <span class="text-xs">使用微信扫一扫</span> </div> <div class="text-xs text-center">工作时间：9:10-18:00</div> </div>  <div class="flex justify-center items-center h-full opacity-20" draggable="false"> <img src="/static/astro/images/home/banner-1/banner-bg-1.png" alt="宝塔面板" loading="eager" decoding="async" fetchpriority="auto" width="1440" height="600" class="home-banner-images"> </div>  <div class="flex justify-center items-center home-banner-content"> <img src="/static/astro/images/home/banner-1/bt_video.gif" draggable="false" alt="宝塔面板视频" loading="eager" decoding="async" fetchpriority="auto" width="1440" height="800" class="home-banner-image-one"> <img src="/static/astro/images/decoration/panel-pc.png" draggable="false" alt="宝塔面板" loading="eager" decoding="async" fetchpriority="auto" width="1440" height="800" class="home-banner-image-two"> </div>  </div>  <div class="slide flex-none w-full min-w-full h-full flex items-center justify-center relative bg-[#EEFFF9]" style="--carousel-fit:cover;" data-index="1">  <div class="max-w-[1400px] w-full mx-auto absolute top-[150px] max-[1400px]:top-[100px] max-lg:top-[50px] max-md:top-[30px] left-[50%] z-10 transform translate-x-[-50%] px-[50px] max-[1400px]:px-12 max-lg:px-6 max-md:px-3"> <h3 class="mb-4 max-md:mb-0 text-4xl max-[1400px]:text-4xl max-lg:text-3xl max-md:text-2xl max-sm:text-2xl font-bold text-bt">
+域名注册服务
+</h3> <div class="mb-4 max-md:mb-1 text-4xl max-[1400px]:text-3xl max-lg:text-2xl max-md:text-xl max-sm:text-lg max-xs:text-base font-bold text-black">
+助力您的数字化品牌建设
+</div> <div class="mb-6 text-sm max-[1400px]:text-xs max-lg:text-xs max-md:text-xs max-sm:text-xs max-xs:text-xs text-gray-700 max-[576px]:hidden">
+提供.com、.cn、.net等多种顶级域名注册服务，价格透明，管理便捷，全球DNS解析。<br>
+专业团队技术支持，快速注册，稳定可靠
+</div> <div class="text-sm max-[1400px]:text-xs max-lg:text-xs max-md:text-xs max-sm:text-xs max-xs:text-xs text-gray-700 mb-6 hidden max-[576px]:block">
+提供多种顶级域名注册服务，价格透明，管理便捷
+</div> <div class="flex"> <a class="btn btn-large btn-primary btn-round px-8 mr-4 font-bold bg-gradient-download transition-all hover:scale-[1.2] inline-flex items-center max-[1200px]:px-4 max-[1200px]:py-2 max-[1200px]:text-sm" href="/new/domain-register.html" target="_blank" rel="noopener noreferrer">
+去注册域名
+</a> <button id="home-domain-btn" class="btn btn-large btn-default btn-round px-8 font-bold max-[1200px]:px-4 max-[1200px]:py-2 max-[1200px]:text-sm" type="button" aria-describedby="" aria-expanded="false">
+立即咨询
+</button> </div> </div> <div class="w-[1400px] max-[1400px]:w-full h-full flex items-center justify-center relative mx-auto"> <img src="/static/astro/images/home/banner-1/banner-bg-2.png" draggable="false" alt="域名管理" loading="eager" decoding="async" fetchpriority="auto" width="1440" height="600" class="home-banner-images"> <img src="/static/astro/images/home/banner-1/banner-domain-overview.png" draggable="false" alt="域名管理" loading="eager" decoding="async" fetchpriority="auto" width="900" height="300" class="absolute right-0 bottom-0 max-[1400px]:w-[600px] max-lg:w-[500px] max-md:w-[400px] max-sm:w-[300px] max-xs:w-[200px]"> </div>  </div>  <div class="slide flex-none w-full min-w-full h-full flex items-center justify-center relative bg-black" style="--carousel-fit:cover;" data-index="2">  <div class="max-w-[1400px] w-full mx-auto absolute top-[150px] max-[1400px]:top-[100px] max-lg:top-[50px] max-md:top-[30px] left-[50%] z-10 transform translate-x-[-50%] px-[50px] max-[1400px]:px-12 max-lg:px-6 max-md:px-3"> <h3 class="mb-4 max-md:mb-0 text-4xl max-[1400px]:text-4xl max-lg:text-3xl max-md:text-2xl max-sm:text-2xl font-bold text-white"> <span class="text-bt">SSL证书</span> 安全防护 为您的网站保驾护航
+</h3> <div class="mb-6 text-sm max-[1400px]:text-xs max-lg:text-xs max-md:text-xs max-sm:text-xs max-xs:text-xs text-gray-300 max-[576px]:hidden">
+提供多品牌SSL证书服务，支持DV、OV、EV等多种验证级别，为您的网站数据传输提供银行级加密保护。<br>
+专业团队技术支持，快速部署，安全可靠
+</div> <div class="text-sm max-[1400px]:text-xs max-lg:text-xs max-md:text-xs max-sm:text-xs max-xs:text-xs text-gray-300 mb-6 hidden max-[576px]:block">
+提供多品牌SSL证书服务，支持多种验证级别，为网站数据传输提供安全保护
+</div> <div class="flex"> <a class="btn btn-large btn-primary btn-round px-8 mr-4 font-bold bg-gradient-download transition-all hover:scale-[1.2] inline-flex items-center max-[1200px]:px-4 max-[1200px]:py-2 max-[1200px]:text-sm" href="/new/ssl.html" target="_blank" rel="noopener noreferrer">
+查看SSL产品
+</a> <button id="home-ssl-btn" class="btn btn-large btn-default btn-round px-8 font-bold border-none max-[1200px]:px-4 max-[1200px]:py-2 max-[1200px]:text-sm" type="button" aria-describedby="" aria-expanded="false">
+立即咨询
+</button> </div> </div> <div class="w-[1400px] max-[1400px]:w-full h-full flex items-center justify-center relative mx-auto"> <img src="/static/astro/images/home/banner-1/banner-bg-3.png" draggable="false" alt="证书管理" loading="eager" decoding="async" fetchpriority="auto" width="1440" height="600" class="home-banner-images"> <img src="/static/astro/images/home/banner-1/banner-ssl-overview.png" draggable="false" alt="证书管理" loading="eager" decoding="async" fetchpriority="auto" width="900" height="300" class="absolute right-[10px] bottom-0 max-[1400px]:right-[10px] max-lg:right-[5px] max-md:right-[0] max-sm:right-[-10px] max-xs:right-[-20px] max-[1400px]:w-[600px] max-lg:w-[500px] max-md:w-[400px] max-sm:w-[300px] max-xs:w-[200px]"> </div>  </div>  <div class="slide flex-none w-full min-w-full h-full flex items-center justify-center relative overflow-hidden bg-[#FDFBFE]" style="--carousel-fit: cover; opacity: 0;" data-index="0" data-clone="first">  <div class="home-banner-header"> <div class="flex flex-col items-center max-md:text-center xl:mb-[1rem] mb-[1.2rem] max-sm:mb-[.6rem]"> <h1 class="xl:text-[56px] lg:text-[48px] md:text-[40px] sm:text-[32px] max-sm:text-[22px] font-bold flex items-center justify-center">
+宝塔，<span class="text-bt">安全高效</span>的服务器运维面板
+<img class="ml-4 max-sm:w-[18px] w-[40px] max-lg:ml-2" src="/static/astro/images/home/free-icon.png"> </h1> <div class="xl:text-[16px] lg:text-[14px] max-sm:px-[5%] text-[12px] text-[#666]">
+全球超2000万台服务器安装宝塔，近300万注册用户使用宝塔，持续更新维护9年值得信赖
+</div> </div> <div class="home-banner-btn-group"> <a class="btn btn-super-large btn-primary btn-round font-bold home-banner-btn bg-gradient-download transition-all inline-flex items-center gap-2" href="/new/download.html" target="_blank" rel="noopener noreferrer"> <span class="label">立即免费安装宝塔面板</span> <i class="fas fa-download install-icon" aria-hidden="true"></i> </a> <a class="flex-col gap-0 font-bold !leading-[1.4] not-bg text-bt banner-link border-b pb-[5px]" href="javascript:void(0)"> <div class="main-title text-[16px]">宝塔1v1安全运维服务</div> <div class="mobile-title">运维服务</div> </a> </div> </div>  <div class="customer-service" style="display: none;"> <div class="qr-header"> <i class="fab fa-weixin wechat-icon"></i> <h4 class="qr-title">添加客服微信</h4> </div> <div class="qr-image-container"> <img src="/static/astro/images/wechat/wechat-all.png" alt="客服微信二维码" loading="lazy" decoding="async" fetchpriority="auto" width="130" height="130" class="qr-image"> </div> <div class="qr-footer"> <i class="fas fa-qrcode scan-icon"></i> <span class="text-xs">使用微信扫一扫</span> </div> <div class="text-xs text-center">工作时间：9:10-18:00</div> </div>  <div class="flex justify-center items-center h-full opacity-20" draggable="false"> <img src="/static/astro/images/home/banner-1/banner-bg-1.png" alt="宝塔面板" loading="eager" decoding="async" fetchpriority="auto" width="1440" height="600" class="home-banner-images"> </div>  <div class="flex justify-center items-center home-banner-content"> <img src="/static/astro/images/home/banner-1/bt_video.gif" draggable="false" alt="宝塔面板视频" loading="eager" decoding="async" fetchpriority="auto" width="1440" height="800" class="home-banner-image-one"> <img src="/static/astro/images/decoration/panel-pc.png" draggable="false" alt="宝塔面板" loading="eager" decoding="async" fetchpriority="auto" width="1440" height="800" class="home-banner-image-two"> </div>  </div></div>  <button id="prev-btn" class="flex absolute left-6 top-1/2 z-50 justify-center items-center w-10 h-10 rounded-full backdrop-blur-sm transition-colors -translate-y-1/2 carousel-nav-btn bg-black/20 hover:bg-black/40" aria-label="上一张" data-astro-cid-rdgpvfyk=""> <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-astro-cid-rdgpvfyk=""> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" data-astro-cid-rdgpvfyk=""></path> </svg> </button> <button id="next-btn" class="flex absolute right-6 top-1/2 z-50 justify-center items-center w-10 h-10 rounded-full backdrop-blur-sm transition-colors -translate-y-1/2 carousel-nav-btn bg-black/20 hover:bg-black/40" aria-label="下一张" data-astro-cid-rdgpvfyk=""> <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-astro-cid-rdgpvfyk=""> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" data-astro-cid-rdgpvfyk=""></path> </svg> </button> <div class="absolute left-1/2 bottom-[14px] -translate-x-1/2 w-[min(150px,90%)] z-10 pointer-events-auto" data-astro-cid-rdgpvfyk=""> <div id="segments" aria-label="进度指示" class="flex gap-1 items-center" data-astro-cid-rdgpvfyk=""><div class="segment flex-1 h-1 rounded-full bg-lime-900 overflow-hidden cursor-pointer transition-all duration-200" data-index="0"></div><div class="segment flex-1 h-1 rounded-full bg-lime-900 overflow-hidden cursor-pointer transition-all duration-200" data-index="1"></div><div class="segment flex-1 h-1 rounded-full bg-lime-900 overflow-hidden cursor-pointer transition-all duration-200" data-index="2"></div></div> </div> </div> <script>(function(){const autoplayInterval = 25000;
+const isAutoplay = false;
+const isLoop = true;
+const dir = "horizontal";
+const transMs = 500;
+const segmentTheme = "auto";
+
+  const root = document.getElementById('carousel');
+  const slidesEl = document.getElementById('slides');
+  const segmentsEl = document.getElementById('segments');
+
+  const slideNodes = Array.from(slidesEl?.querySelectorAll('.slide') ?? []);
+  slideNodes.forEach((el, i) => {
+    if (el instanceof HTMLElement) {
+      el.dataset.index = String(i);
+    }
+  });
+  const slideCount = Math.max(1, slideNodes.length);
+
+  // Seamless loop: clone first and last slide to allow forward wrap
+  let pos = 1; // visual position in extended list (with clones)
+  const axis = dir === 'vertical' ? 'Y' : 'X';
+  function setTransformByPos() {
+    if (!slidesEl) return;
+    slidesEl.style.transform = `translate${axis}(-${pos * 100}%)`;
+  }
+
+  // 初始化时临时禁用过渡动画，避免闪屏
+  if (slidesEl) {
+    slidesEl.style.transitionDuration = '0ms';
+  }
+
+  if (slidesEl && slideCount > 1 && isLoop) {
+    const firstClone = slideNodes[0].cloneNode(true);
+    const lastClone = slideNodes[slideCount - 1].cloneNode(true);
+
+    // 移除克隆节点上的所有id属性，避免事件绑定失效
+    const removeIdsFromElement = (element) => {
+      if (element instanceof HTMLElement) {
+        element.removeAttribute('id');
+        // 递归处理所有子元素
+        const elementsWithId = element.querySelectorAll('[id]');
+        elementsWithId.forEach((el) => el.removeAttribute('id'));
+      }
+      return element;
+    };
+
+    if (firstClone instanceof HTMLElement) {
+      firstClone.dataset.clone = 'first';
+      removeIdsFromElement(firstClone);
+    }
+    if (lastClone instanceof HTMLElement) {
+      lastClone.dataset.clone = 'last';
+      removeIdsFromElement(lastClone);
+    }
+
+    // 临时隐藏克隆节点，避免初始化时显示
+    const originalDisplay = [];
+    if (firstClone instanceof HTMLElement) {
+      originalDisplay.push({ element: firstClone, display: firstClone.style.display });
+      firstClone.style.opacity = '0';
+    }
+    if (lastClone instanceof HTMLElement) {
+      originalDisplay.push({ element: lastClone, display: lastClone.style.display });
+      lastClone.style.opacity = '0';
+    }
+
+    slidesEl.insertBefore(lastClone, slidesEl.firstChild);
+    slidesEl.appendChild(firstClone);
+    // Set initial transform to first real slide (pos=1) without animation
+    setTransformByPos();
+
+    // 强制重排后恢复过渡动画和克隆节点透明度
+    void slidesEl.offsetWidth;
+    slidesEl.style.transitionDuration = `${Number(transMs)}ms`;
+
+    // 恢复克隆节点的透明度，确保过渡平滑
+    requestAnimationFrame(() => {
+      if (firstClone instanceof HTMLElement) {
+        firstClone.style.transition = 'opacity 0.3s ease-in-out';
+        firstClone.style.opacity = '1';
+      }
+      if (lastClone instanceof HTMLElement) {
+        lastClone.style.transition = 'opacity 0.3s ease-in-out';
+        lastClone.style.opacity = '1';
+      }
+    });
+  } else {
+    // 非循环场景：确保初始定位到第一个
+    pos = 0;
+    setTransformByPos();
+
+    // 强制重排后恢复过渡动画
+    if (slidesEl) {
+      void slidesEl.offsetWidth;
+      slidesEl.style.transitionDuration = `${Number(transMs)}ms`;
+    }
+  }
+
+  // Build segmented progress bars with intelligent theming
+  if (segmentsEl) {
+    segmentsEl.innerHTML = '';
+
+    // Helper function to determine segments theme based on background brightness
+    const getSlideTheme = (slideElement) => {
+      if (!slideElement) return 'dark'; // default to dark segments for light backgrounds
+
+      const styles = window.getComputedStyle(slideElement);
+      const bgColor = styles.backgroundColor;
+
+      // Skip if background is transparent
+      const isTransparent =
+        bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent' || bgColor === '';
+
+      if (!isTransparent) {
+        // Calculate luminance to determine if background is dark or light
+        const rgb = bgColor.match(/\d+/g);
+        if (rgb && rgb.length >= 3) {
+          const r = parseInt(rgb[0]);
+          const g = parseInt(rgb[1]);
+          const b = parseInt(rgb[2]);
+
+          // Calculate relative luminance using sRGB formula
+          const getLuminance = (c) => {
+            const channel = c / 255;
+            return channel <= 0.03928 ? channel / 12.92 : Math.pow((channel + 0.055) / 1.055, 2.4);
+          };
+
+          const rLum = getLuminance(r);
+          const gLum = getLuminance(g);
+          const bLum = getLuminance(b);
+          const luminance = 0.2126 * rLum + 0.7152 * gLum + 0.0722 * bLum;
+
+          return luminance >= 0.5 ? 'dark' : 'light';
+        }
+      }
+
+      // Fallback: check Tailwind classes for dark backgrounds
+      const className = slideElement.className;
+      const hasDarkClass =
+        className.includes('bg-black') ||
+        className.includes('bg-gray-900') ||
+        className.includes('bg-gray-800') ||
+        className.includes('bg-gray-700') ||
+        className.includes('bg-[#000') ||
+        className.includes('bg-[#111') ||
+        className.includes('bg-[#222') ||
+        className.includes('bg-[#333') ||
+        className.includes('bg-[#444') ||
+        className.includes('bg-[#555') ||
+        className.includes('bg-[#666') ||
+        className.includes('bg-[#777') ||
+        className.includes('bg-[#888') ||
+        className.includes('bg-[#999');
+
+      // If background is dark, segments should be light
+      // If background is light, segments should be dark
+      return hasDarkClass ? 'light' : 'dark';
+    };
+
+    // Determine theme strategy
+    let globalTheme = 'dark'; // default to dark segments (for light backgrounds)
+    if (segmentTheme === 'light') {
+      // Light theme: assume light background → use dark segments
+      globalTheme = 'dark';
+    } else if (segmentTheme === 'dark') {
+      // Dark theme: assume dark background → use light segments
+      globalTheme = 'light';
+    } else if (segmentTheme === 'auto') {
+      // Auto-detect: use first slide's theme as global theme for consistency
+      // Use slideNodes[0] instead of querying DOM to avoid getting clone elements in loop mode
+      const firstSlide = slideNodes[0];
+      globalTheme = getSlideTheme(firstSlide);
+    }
+
+    // Create segments with determined theme
+    for (let i = 0; i < slideCount; i++) {
+      const seg = document.createElement('div');
+      // 简化主题逻辑，使用统一的背景色
+      seg.className =
+        'segment flex-1 h-1 rounded-full bg-lime-900 overflow-hidden cursor-pointer transition-all duration-200';
+      seg.dataset.index = String(i);
+
+      if (isAutoplay) {
+        const inner = document.createElement('div');
+        // 使用品牌色作为进度条颜色
+        inner.className = 'segment-inner h-full w-0 transition-all ease-linear bg-bt';
+        seg.appendChild(inner);
+      }
+      segmentsEl.appendChild(seg);
+    }
+  }
+
+  let current = 0; // logical index among real slides [0..slideCount-1]
+  let timeoutId = null; // 单次倒计时触发器
+  let animStart = 0;
+  let paused = false;
+  const duration = Number(autoplayInterval);
+  let remaining = duration; // 当前周期剩余时间（毫秒）
+
+  function goTo(index) {
+    // Jump to a specific logical slide with animation in forward direction
+    current = (index + slideCount) % slideCount;
+    pos = current + 1; // account for leading clone
+    setTransformByPos();
+    updateSegments();
+    start(true);
+  }
+
+  function next() {
+    if (!slidesEl || slideCount <= 1) {
+      goTo(current + 1);
+      return;
+    }
+    // At last real slide, animate to appended firstClone, then snap back
+    if (isLoop && current === slideCount - 1) {
+      current = 0; // logical next is first
+      pos = slideCount + 1; // firstClone position
+      setTransformByPos();
+      updateSegments();
+      start(true);
+    } else {
+      goTo(current + 1);
+    }
+  }
+
+  function prev() {
+    if (!slidesEl || slideCount <= 1) {
+      goTo(current - 1);
+      return;
+    }
+    if (isLoop && current === 0) {
+      current = slideCount - 1; // logical prev is last
+      pos = 0; // lastClone position at the head
+      setTransformByPos();
+      updateSegments();
+      start(true);
+    } else {
+      goTo(current - 1);
+    }
+  }
+
+  function updateSegments() {
+    if (!segmentsEl) return;
+    const items = segmentsEl.querySelectorAll('.segment');
+    // 重置所有segments的状态
+    items.forEach((el) => {
+      el.style.backgroundColor = 'rgba(54,83,20,0.2)';
+    });
+    // 设置当前活跃的segment
+    const active = segmentsEl.querySelector(`.segment[data-index="${current}"]`);
+    if (active) {
+      active.style.backgroundColor = 'rgba(54,83,20,0.6)';
+    }
+  }
+
+  function resetProgress(restart = true) {
+    if (!segmentsEl) return;
+    if (restart) {
+      // 重置所有进度条
+      const all = segmentsEl.querySelectorAll('.segment-inner');
+      all.forEach((el) => {
+        if (el instanceof HTMLElement) {
+          el.style.transitionDuration = '0ms';
+          el.style.width = '0%';
+        }
+      });
+      remaining = duration;
+    }
+    const activeInner = segmentsEl.querySelector(
+      `.segment[data-index="${current}"] .segment-inner`
+    );
+    if (activeInner) {
+      // 强制重排确保样式更新
+      void activeInner.offsetWidth;
+
+      if (paused) {
+        // 暂停状态：显示当前进度但不继续动画
+        activeInner.style.transitionDuration = '0ms';
+      } else {
+        // 播放状态：开始进度动画
+        activeInner.style.transitionDuration = `${remaining}ms`;
+        activeInner.style.width = '100%';
+      }
+    }
+    animStart = performance.now();
+  }
+
+  function start(restart = true) {
+    stop();
+    if (paused || !isAutoplay) return;
+    if (restart) remaining = duration;
+    resetProgress(restart);
+    timeoutId = window.setTimeout(() => {
+      next();
+    }, remaining);
+  }
+
+  function stop() {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+      timeoutId = null;
+    }
+  }
+
+  // Hover pause/resume
+  root?.addEventListener('mouseenter', () => {
+    paused = true;
+    const elapsed = Math.max(0, performance.now() - animStart);
+    remaining = Math.max(0, remaining - elapsed);
+    stop();
+    const activeInner = segmentsEl?.querySelector(
+      `.segment[data-index="${current}"] .segment-inner`
+    );
+    if (activeInner && duration > 0) {
+      // 修复进度计算：使用正确的时间比例
+      const totalTime = duration;
+      const elapsedProper = Math.min(elapsed, totalTime);
+      const pct = Math.min(100, (elapsedProper / totalTime) * 100);
+      activeInner.style.transitionDuration = '0ms';
+      activeInner.style.width = `${pct}%`;
+    }
+  });
+
+  root?.addEventListener('mouseleave', () => {
+    paused = false;
+    start(false);
+  });
+
+  // Click segments to change slide
+  segmentsEl?.addEventListener('click', (e) => {
+    const el = e.target instanceof Element ? e.target : null;
+    const seg = el ? el.closest('.segment') : null;
+    if (seg && seg instanceof HTMLElement) {
+      const idx = Number(seg.dataset.index || '0');
+      // Stop current timer first to avoid conflicts
+      stop();
+      paused = false; // ensure progress animates
+      goTo(idx);
+      start(true);
+    }
+  });
+
+  // Left/Right navigation button click handlers
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+
+  prevBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    stop();
+    paused = false;
+    prev();
+    start(true);
+  });
+
+  nextBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    stop();
+    paused = false;
+    next();
+    start(true);
+  });
+
+  // Snap back after wrapping to clones for seamless loop
+  slidesEl?.addEventListener('transitionend', (e) => {
+    if (!slidesEl || e.propertyName !== 'transform') return;
+    if (isLoop && slideCount > 1 && pos === slideCount + 1) {
+      // Reached firstClone; snap back to first real without visible jump
+      slidesEl.style.transitionDuration = '0ms';
+      pos = 1;
+      setTransformByPos();
+      void slidesEl.offsetWidth;
+      slidesEl.style.transitionDuration = `${Number(transMs)}ms`;
+    }
+    if (isLoop && slideCount > 1 && pos === 0) {
+      // Reached lastClone; snap to last real
+      slidesEl.style.transitionDuration = '0ms';
+      pos = slideCount;
+      setTransformByPos();
+      void slidesEl.offsetWidth;
+      slidesEl.style.transitionDuration = `${Number(transMs)}ms`;
+    }
+  });
+
+  // 检测是否为移动设备
+  const isMobileDevice = () => {
+    return (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+      (window.matchMedia && window.matchMedia('(hover: none)').matches)
+    );
+  };
+
+  // Pointer/touch swipe for manual sliding (mobile devices only)
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  let deltaX = 0;
+  let deltaY = 0;
+  let startTime = 0;
+  const thresholdPx = 30; // 最小滑动触发距离
+
+  function getXY(e) {
+    if (e.touches?.[0]) {
+      return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    } else if (e.changedTouches?.[0]) {
+      return { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
+    }
+    return { x: e.clientX, y: e.clientY };
+  }
+
+  function onPointerDown(e) {
+    // 仅在移动设备上启用拖拽切换
+    if (!isMobileDevice()) return;
+
+    // 支持鼠标和触摸事件
+    // 如果点击发生在分段进度条区域，则不触发拖拽逻辑，避免拦截点击
+    const targetEl = e.target instanceof Element ? e.target : null;
+    if (targetEl && targetEl.closest('#segments')) {
+      return;
+    }
+
+    // 检查是否点击了可交互元素（链接、按钮等），如果是则不启动拖拽
+    const clickableElements = ['A', 'BUTTON', 'INPUT', 'TEXTAREA', 'SELECT'];
+    let element = targetEl;
+    while (element && element !== root) {
+      if (clickableElements.includes(element.tagName)) {
+        return;
+      }
+      // 检查是否有 onclick 或其他点击相关的属性
+      if (element.onclick || element.getAttribute('onclick') || element.dataset.clickable) {
+        return;
+      }
+      element = element.parentElement;
+    }
+
+    isDragging = true;
+    paused = true;
+    stop();
+    slidesEl && (slidesEl.style.transitionDuration = '0ms');
+    const { x, y } = getXY(e);
+    startX = x;
+    startY = y;
+    deltaX = 0;
+    deltaY = 0;
+    startTime = Date.now();
+
+    // 捕获指针，确保后续事件能正常接收
+    if (e.pointerId !== undefined && slidesEl?.setPointerCapture) {
+      try {
+        slidesEl.setPointerCapture(e.pointerId);
+      } catch (err) {
+        // 忽略 setPointerCapture 错误
+      }
+    }
+  }
+
+  function onPointerMove(e) {
+    // 仅在移动设备上启用拖拽切换
+    if (!isMobileDevice() || !isDragging || !slidesEl) return;
+    const { x, y } = getXY(e);
+    deltaX = x - startX;
+    deltaY = y - startY;
+    const size = dir === 'vertical' ? root?.clientHeight || 1 : root?.clientWidth || 1;
+    const offsetPct = ((dir === 'vertical' ? deltaY : deltaX) / size) * 100;
+    let targetPct = pos * 100 - offsetPct;
+
+    // 限制滑动范围，防止拉伸过度
+    const maxOverscroll = 20; // 最大拉伸百分比
+    const currentSlidePercent = 100; // 每张幻灯片占100%
+    const minPct = pos * currentSlidePercent - maxOverscroll;
+    const maxPct = pos * currentSlidePercent + maxOverscroll;
+
+    targetPct = Math.max(minPct, Math.min(maxPct, targetPct));
+
+    slidesEl.style.transform = `translate${axis}(-${targetPct}%)`;
+
+    // 阻止默认滚动行为（当滑动方向与组件方向一致，且滑动距离超过3px时）
+    const primaryDelta = dir === 'vertical' ? deltaY : deltaX;
+    const secondaryDelta = dir === 'vertical' ? deltaX : deltaY;
+    if (
+      Math.abs(primaryDelta) > Math.abs(secondaryDelta) &&
+      Math.abs(primaryDelta) > 3 // 降低阈值到3px
+    ) {
+      e.preventDefault?.();
+    }
+  }
+
+  function onPointerUp() {
+    // 仅在移动设备上启用拖拽切换
+    if (!isMobileDevice() || !isDragging) return;
+    isDragging = false;
+    slidesEl && (slidesEl.style.transitionDuration = `${Number(transMs)}ms`);
+    const primaryDelta = dir === 'vertical' ? deltaY : deltaX;
+    const endTime = Date.now();
+    const timeDelta = endTime - startTime;
+
+    // 判断是否为点击操作（拖动距离很小）
+    const clickThreshold = 5; // 5px内视为点击
+    const totalDistance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    const isClick = totalDistance < clickThreshold && timeDelta < 300;
+
+    // 如果是点击操作，恢复位置并允许点击事件继续传播
+    if (isClick) {
+      setTransformByPos();
+      paused = false;
+      start(true);
+      return; // 不阻止事件，让点击事件正常触发
+    }
+
+    // 优化滑动阈值：基础阈值30px，快速滑动（<200ms）时降低到15px
+    const quickSwipeThreshold = thresholdPx * 0.5;
+    const isQuickSwipe = timeDelta < 200 && Math.abs(primaryDelta) > quickSwipeThreshold;
+
+    // 计算滑动距离百分比（相对于容器尺寸），超过12%即可触发
+    const size = dir === 'vertical' ? root?.clientHeight || 1 : root?.clientWidth || 1;
+    const swipeDistancePct = Math.abs(primaryDelta) / size;
+
+    // 双重判断：绝对距离 OR 相对距离百分比（降低百分比阈值到12%）
+    const distanceThreshold = isQuickSwipe ? quickSwipeThreshold : thresholdPx;
+    const shouldSwipe = Math.abs(primaryDelta) > distanceThreshold || swipeDistancePct > 0.12;
+
+    if (shouldSwipe) {
+      // primaryDelta < 0: 向左/上滑动 → 下一张 (next)
+      // primaryDelta > 0: 向右/下滑动 → 上一张 (prev)
+      if (primaryDelta < 0) {
+        next();
+      } else {
+        prev();
+      }
+    } else {
+      // 滑动距离不够，回弹到当前位置
+      setTransformByPos();
+    }
+    paused = false;
+    start(true);
+  }
+
+  // 仅在移动设备上添加拖拽事件监听
+  if (isMobileDevice()) {
+    // 使用Pointer Events API，支持所有输入设备
+    if (window.PointerEvent) {
+      root?.addEventListener('pointerdown', onPointerDown, { passive: true });
+      // 在 root 上监听 move 和 up，确保事件在正确的范围内
+      root?.addEventListener('pointermove', onPointerMove, { passive: false });
+      root?.addEventListener('pointerup', onPointerUp, { passive: true });
+      root?.addEventListener('pointercancel', onPointerUp, { passive: true });
+      root?.addEventListener('pointerleave', onPointerUp, { passive: true });
+    } else {
+      // 降级到传统触摸事件（老旧设备）
+      root?.addEventListener('touchstart', onPointerDown, { passive: false });
+      root?.addEventListener('touchmove', onPointerMove, { passive: false });
+      root?.addEventListener('touchend', onPointerUp, { passive: true });
+    }
+  }
+
+  // ==================== 性能优化：Intersection Observer ====================
+
+  /**
+   * 使用 Intersection Observer 优化轮播组件性能
+   * 只有当组件进入视口时才开始自动播放
+   */
+  function initIntersectionObserver() {
+    if (!('IntersectionObserver' in window) || !root) {
+      // 降级处理：直接初始化
+      initCarousel();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // 组件进入视口，恢复倒计时
+            if (paused) {
+              paused = false;
+              start(false);
+            }
+          } else {
+            // 组件离开视口，暂停并记录剩余时间与进度
+            paused = true;
+            const elapsed = Math.max(0, performance.now() - animStart);
+            remaining = Math.max(0, remaining - elapsed);
+            stop();
+            const activeInner = segmentsEl?.querySelector(
+              `.segment[data-index="${current}"] .segment-inner`
+            );
+            if (activeInner && duration > 0) {
+              // 修复进度计算：使用正确的时间比例
+              const totalTime = duration;
+              const elapsedProper = Math.min(elapsed, totalTime);
+              const pct = Math.min(100, (elapsedProper / totalTime) * 100);
+              activeInner.style.transitionDuration = '0ms';
+              activeInner.style.width = `${pct}%`;
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '50px', // 提前50px开始加载
+        threshold: 0.1, // 10% 可见时触发
+      }
+    );
+
+    observer.observe(root);
+
+    // 清理函数
+    window.addEventListener('beforeunload', () => {
+      observer.disconnect();
+    });
+  }
+
+  /**
+   * 初始化轮播组件
+   */
+  function initCarousel() {
+    // Sync segments with initial state
+    updateSegments();
+    // Initialize autoplay
+    start(true);
+  }
+
+  // 使用 Intersection Observer 优化初始化
+  initIntersectionObserver();
+})();</script>   <div class="pt-[48px] pb-[24px] sm:pt-[64px] sm:pb-[32px] md:pt-[80px] md:pb-[40px] xl:pt-[96px] xl:pb-[48px] !pt-12 !pb-0">  <div class="mx-auto px-3 sm:px-4 md:px-4 lg:px-6 xl:px-8 flex" style="max-width:1800px">  <div id="card-carousel" aria-roledescription="carousel" class="card-carousel relative w-full" style="--gap:16px;--speed:450ms;--card-width:220px;--card-height:80px;" data-astro-cid-dvhkhblt=""> <div id="viewport" class="overflow-hidden w-full h-full card-viewport" data-astro-cid-dvhkhblt=""> <div id="track" class="flex select-none card-track will-change-transform" data-astro-cid-dvhkhblt=""> <div class="card flex justify-center items-center border border-[#eee] bg-white shadow-sm" data-astro-cid-qbsjrgvp="">  <img src="/static/astro/images/trust/fuli.png" class="!max-w-[80%] max-h-[80%] filter-images" alt="富力" loading="lazy">  </div> <div class="card flex justify-center items-center border border-[#eee] bg-white shadow-sm" data-astro-cid-qbsjrgvp="">  <img src="/static/astro/images/trust/hunan.png" class="!max-w-[80%] max-h-[80%] filter-images" alt="湖南" loading="lazy">  </div> <div class="card flex justify-center items-center border border-[#eee] bg-white shadow-sm" data-astro-cid-qbsjrgvp="">  <img src="/static/astro/images/trust/njsj.png" class="!max-w-[80%] max-h-[80%] filter-images" alt="南京审计" loading="lazy">  </div> <div class="card flex justify-center items-center border border-[#eee] bg-white shadow-sm" data-astro-cid-qbsjrgvp="">  <img src="/static/astro/images/trust/xiehui.png" class="!max-w-[80%] max-h-[80%] filter-images" alt="协会" loading="lazy">  </div> <div class="card flex justify-center items-center border border-[#eee] bg-white shadow-sm" data-astro-cid-qbsjrgvp="">  <img src="/static/astro/images/trust/yanjiu.png" class="!max-w-[80%] max-h-[80%] filter-images" alt="研究院" loading="lazy">  </div>  </div> </div>  <div id="nav" class="absolute inset-0 pointer-events-none" data-astro-cid-dvhkhblt=""></div> </div> <script>(function(){const orientation = "horizontal";
+const autoplay = false;
+const interval = 75000;
+const speed = 450;
+const loop = true;
+const itemWidth = 220;
+const itemHeight = 80;
+const gap = 16;
+const minPerView = 1;
+
+  const root = document.getElementById('card-carousel');
+  const track = document.getElementById('track');
+
+  // 计算响应式卡片尺寸（根据屏幕宽度自动缩放）
+  function getResponsiveCardSize() {
+    if (!root) return { width: itemWidth, height: itemHeight };
+
+    const screenWidth = window.innerWidth;
+    let scaleFactor = 1;
+
+    // 根据屏幕宽度计算缩放比例
+    if (screenWidth < 375) {
+      scaleFactor = 0.7; // 小屏手机
+    } else if (screenWidth < 640) {
+      scaleFactor = 0.8; // 大屏手机
+    } else if (screenWidth < 768) {
+      scaleFactor = 0.85; // 平板竖屏
+    } else if (screenWidth < 1024) {
+      scaleFactor = 0.9; // 平板横屏
+    } else if (screenWidth < 1440) {
+      scaleFactor = 1.0; // 小桌面
+    } else {
+      scaleFactor = 1.1; // 大桌面
+    }
+
+    return {
+      width: Math.round(itemWidth * scaleFactor),
+      height: Math.round(itemHeight * scaleFactor),
+    };
+  }
+
+  // 自动计算每屏卡片数量（根据容器宽度和响应式卡片尺寸）
+  function getPerView() {
+    if (!root) return minPerView;
+    const viewport = root.querySelector('#viewport');
+    if (!viewport) return minPerView;
+
+    const { width: cardWidth, height: cardHeight } = getResponsiveCardSize();
+    const containerSize = isHorizontal() ? viewport.clientWidth : viewport.clientHeight;
+    const totalGap = gap * (Math.max(1, minPerView) - 1);
+    const availableSize = containerSize - totalGap;
+    const calculated = Math.floor(availableSize / (isHorizontal() ? cardWidth : cardHeight));
+
+    // 确保至少显示 minPerView 个，至多不超过实际卡片数量
+    return Math.max(minPerView, calculated);
+  }
+
+  function isHorizontal() {
+    return orientation === 'horizontal';
+  }
+
+  let items = Array.from(track?.children ?? []).filter((n) => n instanceof HTMLElement);
+  let realCount = items.length;
+  let perView = getPerView();
+  let index = 0; // 当前左上角卡片的逻辑索引
+  let pos = 0; // 在扩展列表中的视觉位置（含克隆）
+  let clonesEachSide = 0;
+  let cardSize = 0; // 卡片主轴尺寸（水平：宽；垂直：高）
+  let autoplayTimer = null;
+  let dragging = false;
+  let dragStart = 0;
+  let dragBaseOffset = 0;
+
+  function measureCardSize() {
+    // 使用响应式卡片尺寸
+    const { width: cardWidth, height: cardHeight } = getResponsiveCardSize();
+    cardSize = isHorizontal() ? cardWidth : cardHeight;
+
+    // 备选方案：如果响应式尺寸不合理，尝试测量实际尺寸
+    if (cardSize <= 0) {
+      const first = track?.querySelector('.card');
+      if (first) {
+        const rect = first.getBoundingClientRect();
+        cardSize = isHorizontal() ? rect.width : rect.height;
+      }
+    }
+
+    return cardSize;
+  }
+
+  function setupClones() {
+    // 清理旧克隆
+    track?.querySelectorAll('[data-clone]')?.forEach((n) => n.remove());
+    items = Array.from(track?.children ?? []).filter((n) => n instanceof HTMLElement);
+    realCount = items.length;
+    perView = getPerView();
+    clonesEachSide = loop ? Math.min(perView, realCount) : 0;
+    if (track && loop && realCount > 0) {
+      // 前置克隆（末尾的最后 N 个）
+      for (let i = 0; i < clonesEachSide; i++) {
+        const src = items[realCount - clonesEachSide + i];
+        const clone = src.cloneNode(true);
+        clone.dataset.clone = 'head';
+        track.insertBefore(clone, track.firstChild);
+      }
+      // 末尾克隆（最前 N 个）
+      for (let i = 0; i < clonesEachSide; i++) {
+        const src = items[i];
+        const clone = src.cloneNode(true);
+        clone.dataset.clone = 'tail';
+        track.appendChild(clone);
+      }
+    }
+    measureCardSize();
+    // 初始位置：跳到第一个真实元素
+    index = 0;
+    pos = clonesEachSide; // 扩展列表的视觉位置
+    applyTransform(true);
+  }
+
+  function applyTransform(animated = true) {
+    if (!track) return;
+    const g = root ? Number(getComputedStyle(root).getPropertyValue('--gap')) || 0 : 0;
+    const offset = pos * (cardSize + g);
+    track.style.transitionDuration = animated ? `${speed}ms` : '0ms';
+    const translate = isHorizontal() ? `translateX(-${offset}px)` : `translateY(-${offset}px)`;
+    track.style.transform = translate;
+  }
+
+  // 保留 next/prev 供交互使用
+
+  function next() {
+    if (!loop && index >= realCount - perView) {
+      return;
+    }
+    index += 1;
+    pos += 1;
+    applyTransform(true);
+  }
+
+  function prev() {
+    if (!loop && index <= 0) {
+      return;
+    }
+    index -= 1;
+    pos -= 1;
+    applyTransform(true);
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    if (!autoplay || realCount <= 1) return;
+    autoplayTimer = window.setInterval(() => {
+      next();
+    }, Number(interval));
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  // 触摸/鼠标拖拽
+  let dragStartTime = 0;
+  let startClientX = 0;
+  let startClientY = 0;
+
+  function onPointerDown(e) {
+    dragging = true;
+    stopAutoplay();
+    track?.setPointerCapture?.(e.pointerId);
+    if (track) track.style.transitionDuration = '0ms';
+    dragStart = isHorizontal() ? e.clientX : e.clientY;
+    startClientX = e.clientX;
+    startClientY = e.clientY;
+    dragStartTime = Date.now();
+    const g = root ? Number(getComputedStyle(root).getPropertyValue('--gap')) || 0 : 0;
+    dragBaseOffset = pos * (cardSize + g);
+  }
+
+  function onPointerMove(e) {
+    if (!dragging || !track) return;
+    const now = isHorizontal() ? e.clientX : e.clientY;
+    const delta = now - dragStart;
+    const g = root ? Number(getComputedStyle(root).getPropertyValue('--gap')) || 0 : 0;
+    let targetOffset = dragBaseOffset - delta;
+
+    // 限制滑动范围，防止拉伸过度（最大拉伸一个卡片宽度的20%）
+    const maxOverscroll = cardSize * 0.2;
+    const minOffset = (pos * (cardSize + g)) - maxOverscroll;
+    const maxOffset = (pos * (cardSize + g)) + maxOverscroll;
+    targetOffset = Math.max(minOffset, Math.min(maxOffset, targetOffset));
+
+    const translate = isHorizontal()
+      ? `translateX(${-targetOffset}px)`
+      : `translateY(${-targetOffset}px)`;
+    track.style.transform = translate;
+
+    // 阻止默认滚动行为（当滑动方向与组件方向一致时）
+    const primaryDelta = isHorizontal() ? (e.clientX - startClientX) : (e.clientY - startClientY);
+    const secondaryDelta = isHorizontal() ? (e.clientY - startClientY) : (e.clientX - startClientX);
+    if (Math.abs(primaryDelta) > Math.abs(secondaryDelta) && Math.abs(primaryDelta) > 5) {
+      e.preventDefault?.();
+    }
+  }
+
+  function onPointerUp(e) {
+    if (!dragging) return;
+    dragging = false;
+    const now = isHorizontal() ? e.clientX : e.clientY;
+    const delta = now - dragStart;
+    const timeDelta = Date.now() - dragStartTime;
+
+    // 优化阈值：基础阈值更低，快速滑动时更灵敏
+    const threshold = Math.max(30, cardSize * 0.25);
+    const quickSwipeThreshold = threshold * 0.5;
+    const isQuickSwipe = timeDelta < 200 && Math.abs(delta) > quickSwipeThreshold;
+
+    // 计算滑动距离百分比（相对于卡片尺寸），超过15%即可触发
+    const viewportSize = isHorizontal()
+      ? (root?.querySelector('#viewport')?.clientWidth || 1)
+      : (root?.querySelector('#viewport')?.clientHeight || 1);
+    const swipeDistancePct = Math.abs(delta) / viewportSize;
+
+    // 双重判断：绝对距离 OR 相对距离百分比
+    const distanceThreshold = (isQuickSwipe ? quickSwipeThreshold : threshold);
+    const shouldSwipe = Math.abs(delta) > distanceThreshold || swipeDistancePct > 0.15;
+
+    if (shouldSwipe) {
+      // delta < 0: 向左/上滑动 → next
+      // delta > 0: 向右/下滑动 → prev
+      if (delta < 0) next();
+      else prev();
+    } else {
+      applyTransform(true);
+    }
+    startAutoplay();
+  }
+
+  // 使用Pointer Events API，支持所有设备
+  if (window.PointerEvent) {
+    track?.addEventListener('pointerdown', onPointerDown, { passive: true });
+    // 在 root 上监听 move 和 up，确保事件在正确的范围内
+    root?.addEventListener('pointermove', onPointerMove, { passive: false });
+    root?.addEventListener('pointerup', onPointerUp, { passive: true });
+    root?.addEventListener('pointercancel', onPointerUp, { passive: true });
+    root?.addEventListener('pointerleave', onPointerUp, { passive: true });
+  } else {
+    // 降级到触摸事件（老旧设备）
+    track?.addEventListener('touchstart', onPointerDown, { passive: false });
+    track?.addEventListener('touchmove', onPointerMove, { passive: false });
+    track?.addEventListener('touchend', onPointerUp, { passive: true });
+  }
+
+  // 过渡结束后的无缝回跳（克隆区）
+  track?.addEventListener('transitionend', (e) => {
+    if (e.propertyName !== 'transform') return;
+    if (!loop) return;
+    if (pos >= realCount + clonesEachSide) {
+      // 右侧越界，回到真实首项
+      pos = clonesEachSide;
+      index = 0;
+      applyTransform(false);
+    } else if (pos < clonesEachSide) {
+      // 左侧越界，回到真实末项
+      pos = realCount + clonesEachSide - 1;
+      index = realCount - 1;
+      applyTransform(false);
+    }
+  });
+
+  // 悬停暂停/离开继续
+  root?.addEventListener('mouseenter', () => stopAutoplay());
+  root?.addEventListener('mouseleave', () => startAutoplay());
+
+  // ==================== 性能优化：Intersection Observer ====================
+
+  /**
+   * 使用 Intersection Observer 优化轮播组件性能
+   * 只有当组件进入视口时才开始自动播放
+   */
+  function initIntersectionObserver() {
+    if (!('IntersectionObserver' in window) || !root) {
+      // 降级处理：直接初始化
+      init();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // 组件进入视口，开始初始化和自动播放
+            if (!autoplayTimer) {
+              init();
+            }
+            startAutoplay();
+          } else {
+            // 组件离开视口，暂停自动播放以节省资源
+            stopAutoplay();
+          }
+        });
+      },
+      {
+        rootMargin: '50px', // 提前50px开始加载
+        threshold: 0.1, // 10% 可见时触发
+      }
+    );
+
+    observer.observe(root);
+
+    // 清理函数
+    window.addEventListener('beforeunload', () => {
+      observer.disconnect();
+    });
+  }
+
+  // 初始化
+  function init() {
+    updateCardStyles(); // 初始化响应式样式
+    setupClones();
+    startAutoplay();
+  }
+
+  // 使用 Intersection Observer 优化初始化
+  initIntersectionObserver();
+
+  // 动态更新卡片样式（响应式）
+  function updateCardStyles() {
+    const { width: cardWidth, height: cardHeight } = getResponsiveCardSize();
+    if (root) {
+      root.style.setProperty('--card-width', `${cardWidth}px`);
+      root.style.setProperty('--card-height', `${cardHeight}px`);
+    }
+  }
+
+  // 自适应：窗口尺寸变化重新计算（带防抖）
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const oldPV = perView;
+      perView = getPerView();
+      measureCardSize();
+      updateCardStyles(); // 更新卡片样式
+      // 重新设置克隆，保持无缝性
+      if (perView !== oldPV) {
+        setupClones();
+        startAutoplay();
+      } else {
+        applyTransform(false);
+      }
+    }, 150); // 150ms 防抖
+  });
+})();</script>   </div>  </div>  <div class="pt-[48px] pb-[24px] sm:pt-[64px] sm:pb-[32px] md:pt-[80px] md:pb-[40px] xl:pt-[96px] xl:pb-[48px]">  <div class="gap-[10px] max-xs:gap-[8px] max-lg:gap-[6px] max-md:gap-[2px] text-center items-center mb-[40px] max-md:mb-[20px] flex flex-col"> <h2 class="text-[30px] sm:text-[38px] md:text-[48px] font-bold leading-tight text-[#222] px-[12px]"> 运维要<span class="text-bt">高效</span>，装宝塔 </h2> <div class="text-[12px] md:text-[18px] px-[10%] text-[#787a79]"> 
+简单高效的服务器运维面板，让服务器管理更轻松，<a class="text-bt hover:text-bt-dark" href="/new/product_linux.html" target="_blank" rel="noopener noreferrer">
+查看更多功能 »»
+</a>  </div> </div> <div class="mx-auto px-3 sm:px-4 md:px-4 lg:px-6 xl:px-8 flex mt-8 max-md:mt-2 md:!px-4 max-[1200px]:flex flex-col !p-0 max-xl:!px-4" style="max-width:1400px">   <div class="mb-4 mobile-tabs-container xl:hidden"> <div class="mobile-tabs-wrapper"> <ul class="mobile-tabs-list"> <li class="mobile-tab-item active" data-tab="website"> <div class="mobile-tab-content"> <span class="mobile-tab-title">快速创建/管理网站</span> </div> </li><li class="mobile-tab-item" data-tab="service"> <div class="mobile-tab-content"> <span class="mobile-tab-title">服务器管理</span> </div> </li><li class="mobile-tab-item" data-tab="safety"> <div class="mobile-tab-content"> <span class="mobile-tab-title">安全防护</span> </div> </li><li class="mobile-tab-item" data-tab="application"> <div class="mobile-tab-content"> <span class="mobile-tab-title">海量应用支持</span> </div> </li><li class="mobile-tab-item" data-tab="docker"> <div class="mobile-tab-content"> <span class="mobile-tab-title">Docker 容器可视化</span> </div> </li> </ul> </div> </div>  <div class="overview-container w-full relative flex items-start xl:h-[784px] lg:h-[600px] md:h-[500px] sm:h-[400px] border-[2px] border-white shadow-[0_0_4px_4px_#00000008]">  <div class="hidden h-full desktop-tabs-sidebar xl:block"> <ul class="overview-list"> <li class="item active" data-tab="website"> <div class="btn-tab"> <span class="num text-[#a1a7b3] text-[30px] font-medium">01.</span> <span class="text text-[#222] text-[20px] mt-1">快速创建/管理网站</span> </div> <div class="btn-tab-active hidden pl-[40px] pr-[25px]"> <span class="title text-white text-[20px] font-black mb-2">快速创建/管理网站</span> <span class="content text-white text-[14px] font-normal">快速创建并管理你的网站便捷的网站管理功能，例如域名绑定，一键部署SSL证书，更改网站配置等功能</span> </div> </li><li class="item" data-tab="service"> <div class="btn-tab"> <span class="num text-[#a1a7b3] text-[30px] font-medium">02.</span> <span class="text text-[#222] text-[20px] mt-1">服务器管理</span> </div> <div class="btn-tab-active hidden pl-[40px] pr-[25px]"> <span class="title text-white text-[20px] font-black mb-2">服务器管理</span> <span class="content text-white text-[14px] font-normal">支持主流及多数国产操作系统，内置多机管理功能，轻松管理多台服务器</span> </div> </li><li class="item" data-tab="safety"> <div class="btn-tab"> <span class="num text-[#a1a7b3] text-[30px] font-medium">03.</span> <span class="text text-[#222] text-[20px] mt-1">安全防护</span> </div> <div class="btn-tab-active hidden pl-[40px] pr-[25px]"> <span class="title text-white text-[20px] font-black mb-2">安全防护</span> <span class="content text-white text-[14px] font-normal">多重安全防护机制，配合一流的WAF防护及防篡改，实时监控服务器状态，保障数据安全</span> </div> </li><li class="item" data-tab="application"> <div class="btn-tab"> <span class="num text-[#a1a7b3] text-[30px] font-medium">04.</span> <span class="text text-[#222] text-[20px] mt-1">海量应用支持</span> </div> <div class="btn-tab-active hidden pl-[40px] pr-[25px]"> <span class="title text-white text-[20px] font-black mb-2">海量应用支持</span> <span class="content text-white text-[14px] font-normal">支持一键部署LAMP/LNMP环境，WordPress、ThinkPHP、Halo等主流应用的一键部署，大大提升开发效率</span> </div> </li><li class="item" data-tab="docker"> <div class="btn-tab"> <span class="num text-[#a1a7b3] text-[30px] font-medium">05.</span> <span class="text text-[#222] text-[20px] mt-1">Docker 容器可视化</span> </div> <div class="btn-tab-active hidden pl-[40px] pr-[25px]"> <span class="title text-white text-[20px] font-black mb-2">Docker 容器可视化</span> <span class="content text-white text-[14px] font-normal">支持一键部署Docker应用，拥有超多应用模板，无需配置即可部署</span> </div> </li> </ul> </div>  <div id="overview-gallery" class="relative w-full h-full overflow-hidden bg-white"> <div class="gallery-img absolute inset-0 transition-opacity duration-[240ms] opacity-100 pointer-events-auto" data-key="website" data-loaded="true"> <img src="/static/astro/images/home/overview-tabs/tabs/website.png" alt="快速创建并管理你的网站" loading="lazy" decoding="async" fetchpriority="auto" width="100" height="780" class="gallery-img__img"> <div class="flex absolute inset-0 justify-center items-center bg-white bg-opacity-80 opacity-0 transition-opacity duration-300 pointer-events-none gallery-img__loading"> <div class="flex flex-col items-center"> <div class="w-8 h-8 rounded-full border-2 animate-spin border-bt border-t-transparent"></div> <span class="mt-2 text-sm text-gray-600">加载中...</span> </div> </div> </div><div class="gallery-img absolute inset-0 transition-opacity duration-[240ms] opacity-0 pointer-events-none" data-key="service" data-loaded="false"> <img data-src="/static/astro/images/home/overview-tabs/tabs/service.png" alt="服务器管理" width="100" height="780" class="gallery-img__img" loading="lazy" data-lazy="true"> <div class="flex absolute inset-0 justify-center items-center bg-white bg-opacity-80 opacity-0 transition-opacity duration-300 pointer-events-none gallery-img__loading"> <div class="flex flex-col items-center"> <div class="w-8 h-8 rounded-full border-2 animate-spin border-bt border-t-transparent"></div> <span class="mt-2 text-sm text-gray-600">加载中...</span> </div> </div> </div><div class="gallery-img absolute inset-0 transition-opacity duration-[240ms] opacity-0 pointer-events-none" data-key="safety" data-loaded="false"> <img data-src="/static/astro/images/home/overview-tabs/tabs/safety.png" alt="安全防护" width="100" height="780" class="gallery-img__img" loading="lazy" data-lazy="true"> <div class="flex absolute inset-0 justify-center items-center bg-white bg-opacity-80 opacity-0 transition-opacity duration-300 pointer-events-none gallery-img__loading"> <div class="flex flex-col items-center"> <div class="w-8 h-8 rounded-full border-2 animate-spin border-bt border-t-transparent"></div> <span class="mt-2 text-sm text-gray-600">加载中...</span> </div> </div> </div><div class="gallery-img absolute inset-0 transition-opacity duration-[240ms] opacity-0 pointer-events-none" data-key="application" data-loaded="false"> <img data-src="/static/astro/images/home/overview-tabs/tabs/application.png" alt="海量应用支持" width="100" height="780" class="gallery-img__img" loading="lazy" data-lazy="true"> <div class="flex absolute inset-0 justify-center items-center bg-white bg-opacity-80 opacity-0 transition-opacity duration-300 pointer-events-none gallery-img__loading"> <div class="flex flex-col items-center"> <div class="w-8 h-8 rounded-full border-2 animate-spin border-bt border-t-transparent"></div> <span class="mt-2 text-sm text-gray-600">加载中...</span> </div> </div> </div><div class="gallery-img absolute inset-0 transition-opacity duration-[240ms] opacity-0 pointer-events-none" data-key="docker" data-loaded="false"> <img data-src="/static/astro/images/home/overview-tabs/tabs/docker.png" alt="Docker 容器可视化" width="100" height="780" class="gallery-img__img" loading="lazy" data-lazy="true"> <div class="flex absolute inset-0 justify-center items-center bg-white bg-opacity-80 opacity-0 transition-opacity duration-300 pointer-events-none gallery-img__loading"> <div class="flex flex-col items-center"> <div class="w-8 h-8 rounded-full border-2 animate-spin border-bt border-t-transparent"></div> <span class="mt-2 text-sm text-gray-600">加载中...</span> </div> </div> </div> </div> </div> <section class="flex flex-wrap gap-4 justify-center items-center px-4 w-full md:px-0 mt-[48px] mb-[24px]"> <a id="home-install-btn" class="btn btn-super-large btn-primary btn-round font-bold home-banner-btn bg-gradient-download transition-all inline-flex items-center gap-2 w-[300px]" href="/new/download.html" target="_blank" rel="noopener noreferrer"> <span class="label">立即免费安装宝塔面板</span> <i class="fas fa-download install-icon" aria-hidden="true"></i> </a> </section>  </div>  </div>  <div class="pt-[48px] pb-[24px] sm:pt-[64px] sm:pb-[32px] md:pt-[80px] md:pb-[40px] xl:pt-[96px] xl:pb-[48px]">  <div class="gap-[10px] max-xs:gap-[8px] max-lg:gap-[6px] max-md:gap-[2px] text-center items-center mb-[40px] max-md:mb-[20px] flex flex-col"> <h2 class="text-[30px] sm:text-[38px] md:text-[48px] font-bold leading-tight text-[#222] px-[12px]"> 搭配使用，更高效 </h2> <div class="text-[12px] md:text-[18px] px-[10%] text-[#787a79]"> 整合域名、证书与运维服务，提升网站可信度与管理效率 </div> </div> <div class="mx-auto px-3 sm:px-4 md:px-4 lg:px-6 xl:px-8 flex flex-col gap-6 mt-8 max-md:mt-2 lg:mt-4 !p-0 max-xl:!px-4" style="max-width:1400px">   <section class="w-full grid grid-cols-1 md:grid-cols-3 gap-[2rem] lg:gap-[3rem]"> <a href="/new/ssl.html" target="_blank" rel="noopener noreferrer" title="点击了解更多，全球可信的SSL证书" class="p-10 pb-[40px] sm:pb-[80px] lg:pb-[80px] min-h-[240px] lg:min-h-[300px] bg-[#e8f5ee] shadow-[0_0_4px_2px_#0000000a] flex flex-col bg-no-repeat bg-center card-bg bg-cover" data-bg-lazy="/static/astro/images/home/recomm/certificate.png"> <h3 class="text-[20px] font-semibold text-[#222] lg:text-[26px]">全球可信的SSL证书</h3> <p class="mt-2 text-[16px] leading-6 text-[#7b7d7c]">多种不同品牌的(HTTPS)SSL证书快速接入，保障您网站安全，提升用户信任度</p> </a><a href="/new/ops.html" target="_blank" rel="noopener noreferrer" title="点击了解更多，宝塔专业运维服务" class="p-10 pb-[40px] sm:pb-[80px] lg:pb-[80px] min-h-[240px] lg:min-h-[300px] bg-[#e8f5ee] shadow-[0_0_4px_2px_#0000000a] flex flex-col bg-no-repeat bg-center card-bg bg-cover" data-bg-lazy="/static/astro/images/home/recomm/operation.png"> <h3 class="text-[20px] font-semibold text-[#222] lg:text-[26px]">宝塔专业运维服务</h3> <p class="mt-2 text-[16px] leading-6 text-[#7b7d7c]">宝塔团队拥有10余年服务器运维行业经验，为您的业务保驾护航</p> </a><a href="/new/domain-register.html" target="_blank" rel="noopener noreferrer" title="点击了解更多，价格实惠的域名" class="p-10 pb-[40px] sm:pb-[80px] lg:pb-[80px] min-h-[240px] lg:min-h-[300px] bg-[#e8f5ee] shadow-[0_0_4px_2px_#0000000a] flex flex-col bg-no-repeat bg-center card-bg bg-cover" data-bg-lazy="/static/astro/images/home/recomm/domain.png"> <h3 class="text-[20px] font-semibold text-[#222] lg:text-[26px]">价格实惠的域名</h3> <p class="mt-2 text-[16px] leading-6 text-[#7b7d7c]">提供价格实惠的域名注册服务，价格透明，无需隐藏费用，一键快速注册</p> </a> </section>    </div>  </div>  <div class="pt-[48px] pb-[24px] sm:pt-[64px] sm:pb-[32px] md:pt-[80px] md:pb-[40px] xl:pt-[96px] xl:pb-[48px] !pb-0">  <div class="gap-[10px] max-xs:gap-[8px] max-lg:gap-[6px] max-md:gap-[2px] text-center items-center mb-[40px] max-md:mb-[20px] flex flex-col"> <h2 class="text-[30px] sm:text-[38px] md:text-[48px] font-bold leading-tight text-[#222] px-[12px]"> 数据见证实力 </h2> <div class="text-[12px] md:text-[18px] px-[10%] text-[#787a79]"> 多年来服务千万用户，获得业界广泛认可，用数据证明我们的专业与可靠 </div> </div> <div class="mx-auto px-3 sm:px-4 md:px-4 lg:px-6 xl:px-8 flex mt-[36px] !px-0 flex-col" style="max-width:100%">  <div class="w-full py-8 max-sm:py-0 max-md:py-6 bg-[#f7faf7] bg-no-repeat bg-center bg-cover" data-bg-lazy="/static/astro/images/home/product-data.png" aria-label="关键数据展示背景图"> <div class="mx-auto px-3 sm:px-4 md:px-4 lg:px-6 xl:px-8 flex h-full !px-0" style="max-width:1400px">  <ul class="w-full h-full flex flex-col md:flex-row items-center md:items-start justify-around gap-4 transition-all duration-200 max-[1400px]:scale-[0.95] max-[900px]:scale-[0.85]"> <li class="flex flex-col justify-center items-center 2xl:px-12 w-full transition-all duration-200 md:w-1/3 md:text-left max-md:mb-6"> <div class="text-bt font-black leading-none flex items-end tracking-tight text-[42px] sm:text-[56px] md:text-[65px]"> 2000 <span class="ml-1 text-[0.4em] align-super leading-none relative -top-[8px]"> 万+ </span> </div> <div class="flex justify-center items-center mt-2 md:justify-start"> <span class="font-semibold text-[#222] mr-2 text-[18px] lg:text-[22px]"> 安装 </span> <span class="text-[#787a79] text-sm sm:text-base">海量用户关注，信赖倍增</span> </div> </li><li class="flex flex-col justify-center items-center 2xl:px-12 w-full transition-all duration-200 md:w-1/3 md:text-left max-md:mb-6"> <div class="text-bt font-black leading-none flex items-end tracking-tight text-[42px] sm:text-[56px] md:text-[65px]"> 1000 <span class="ml-1 text-[0.4em] align-super leading-none relative -top-[8px]"> + </span> </div> <div class="flex justify-center items-center mt-2 md:justify-start"> <span class="font-semibold text-[#222] mr-2 text-[18px] lg:text-[22px]"> 政企大客户 </span> <span class="text-[#787a79] text-sm sm:text-base">于中央大型政企广泛使用</span> </div> </li><li class="flex flex-col justify-center items-center 2xl:px-12 w-full transition-all duration-200 md:w-1/3 md:text-left max-md:mb-6"> <div class="text-bt font-black leading-none flex items-end tracking-tight text-[42px] sm:text-[56px] md:text-[65px]"> 220 <span class="ml-1 text-[0.4em] align-super leading-none relative -top-[8px]"> 万+ </span> </div> <div class="flex justify-center items-center mt-2 md:justify-start"> <span class="font-semibold text-[#222] mr-2 text-[18px] lg:text-[22px]"> 注册用户 </span> <span class="text-[#787a79] text-sm sm:text-base">超过220万注册用户</span> </div> </li> </ul>  </div> </div>  </div>  </div>  <div class="pt-[48px] pb-[24px] sm:pt-[64px] sm:pb-[32px] md:pt-[80px] md:pb-[40px] xl:pt-[96px] xl:pb-[48px] bg-[#F8F8F8]">  <div class="gap-[10px] max-xs:gap-[8px] max-lg:gap-[6px] max-md:gap-[2px] text-center items-center mb-[40px] max-md:mb-[20px] flex flex-col"> <h2 class="text-[30px] sm:text-[38px] md:text-[48px] font-bold leading-tight text-[#222] px-[12px]"> 安全高效的服务器运维面板 </h2> <div class="text-[12px] md:text-[18px] px-[10%] text-[#787a79]"> 支持一键 LAMP/LNMP/集群/监控/网站/FTP/数据库/JAVA 等 100+ 服务器管理能力 </div> </div> <div class="mx-auto px-3 sm:px-4 md:px-4 lg:px-6 xl:px-8 flex mt-[36px] !px-0 flex-col gap-8" style="max-width:1400px">  <p class="text-center text-[18px] sm:text-[20px] md:text-[24px] font-semibold">
+简单<span class="font-semibold text-bt">4</span>步，完成宝塔面板的安装与配置
+</p> <ol class="flex flex-wrap gap-6 px-2 w-full xl:grid-cols-4 md:px-0">  <li class="h-[330px] bg-white p-6 flex flex-1 flex-col items-center box-border text-center relative min-w-[300px]"> <div class="w-full h-[100px] flex items-center justify-center mb-5"> <img src="/static/astro/images/home/step/download.svg" alt="通过SSH连接服务器" class="w-auto h-auto" loading="lazy"> </div> <h3 class="text-[18px] md:text-[20px] font-bold text-[#222]">通过SSH连接您的服务器</h3> <p class="mt-2 text-[12px] md:text-[14px] leading-[16px] md:leading-[18px] text-[#7b7d7c] h-[36px] text-left">
+使用堡塔 SSH 终端快速连接服务器，免去复杂密钥配置，保障连接安全与效率。
+</p> <div class="mt-6"> <a class="btn btn-default btn-default btn-round" href="https://download-esa.bt.cn/bt-client/bt-client-win-1.2.5-x64.exe">
+去下载SSH终端
+</a> </div> </li>  <li class="h-[330px] bg-white p-6 flex flex-1 flex-col items-center box-border text-center relative min-w-[300px]"> <div class="w-full h-[100px] flex items-center justify-center mb-5"> <img src="/static/astro/images/home/step/command.svg" alt="执行安装命令" class="w-auto h-auto" loading="lazy"> </div> <h3 class="text-[18px] md:text-[20px] font-bold text-[#222]">执行安装命令</h3> <p class="mt-2 text-[12px] md:text-[14px] leading-[16px] md:leading-[18px] text-[#7b7d7c] h-[36px] text-left">
+复制下方安装命令，在 SSH 终端中执行，快速开始安装面板。
+</p> <div class="mt-6"> <a class="btn btn-default btn-default btn-round transition-all text-white bg-gradient-download hover:scale-[1.2] inline-flex items-center gap-2" href="/new/download.html" target="_blank" rel="noopener noreferrer">
+立即安装
+<i class="fas fa-download install-icon" aria-hidden="true"></i> </a> </div> </li>  <li class="h-[330px] bg-white p-6 flex flex-1 flex-col items-center box-border text-center relative min-w-[300px]"> <div class="w-full h-[100px] flex items-center justify-center mb-5"> <img src="/static/astro/images/home/step/panel.svg" alt="访问面板" class="w-auto h-auto" loading="lazy"> </div> <h3 class="text-[18px] md:text-[20px] font-bold text-[#222]">访问面板</h3> <p class="mt-2 text-[12px] md:text-[14px] leading-[16px] md:leading-[18px] text-[#7b7d7c] h-[36px] text-left">
+安装完成后，按照提示访问链接并使用初始账号密码登录，开始管理服务器。
+</p> <div class="mt-6 h-[38px]">  </div> </li>  <li class="h-[330px] bg-white p-6 flex flex-1 flex-col items-center box-border text-center relative min-w-[300px]"> <div class="w-full h-[100px] flex items-center justify-center mb-5"> <img src="/static/astro/images/home/step/init.svg" alt="初始化配置" class="w-auto h-auto" loading="lazy"> </div> <h3 class="text-[18px] md:text-[20px] font-bold text-[#222]">安装推荐套件</h3> <p class="mt-2 text-[12px] md:text-[14px] leading-[16px] md:leading-[18px] text-[#7b7d7c] h-[36px] text-left">
+首次登录根据业务需要一键安装网站环境配置。
+</p> <div class="mt-6 h-[38px]">  </div> </li> </ol> <section class="flex flex-wrap gap-4 justify-center items-center px-4 w-full md:px-0 mt-[48px] mb-[24px]"> <a class="btn btn-default btn-primary btn-round" href="/new/download.html" target="_blank" rel="noopener noreferrer">
+更多安装方式
+</a> <a class="btn btn-default btn-plain btn-default btn-round" href="https://demo.bt.cn/" target="_blank" rel="noopener noreferrer">查看演示</a> <a class="btn btn-default btn-plain btn-default btn-round" href="/new/domain-register.html" target="_blank" rel="noopener noreferrer">
+注册域名
+</a> <a class="btn btn-default btn-plain btn-default btn-round" href="/new/ssl.html" target="_blank" rel="noopener noreferrer">申请SSL证书</a> <a class="btn btn-default btn-plain btn-default btn-round" href="/new/ops.html" target="_blank" rel="noopener noreferrer">需要运维服务</a> </section>  </div>  </div>  </main> <footer class="footer"> <div class="footer-container"> <div class="footer-grid">  <div class="footer-brand"> <div class="flex gap-3 items-center mb-3"> <img src="/static/astro/icon/logo.svg" alt="宝塔 BT" loading="eager" decoding="async" fetchpriority="auto" width="96" height="32" class="w-24"> </div> <p class="text-lg text-[#B7B7B7]">让运维安全高效</p> </div>  <div> <h3 class="font-semibold md:text-sm text-lg">提供服务</h3> <ul class="footer-list"> <li> <a class="footer-link" href="/new/product_linux.html" target="_blank" rel="noopener noreferrer">专业的运维软件</a> </li><li> <a class="footer-link" href="/new/framework.html" target="_blank" rel="noopener noreferrer">专业的运维建议</a> </li><li> <a class="footer-link" href="/new/framework.html" target="_blank" rel="noopener noreferrer">专业运维服务跟踪</a> </li><li> <a class="footer-link" href="/new/gradeProtection.html" target="_blank" rel="noopener noreferrer">一站式等保解决方案</a> </li> </ul> </div>  <div> <h3 class="font-semibold md:text-sm text-lg">常用文档</h3> <ul class="footer-list"> <li> <a class="footer-link" href="https://docs.bt.cn/" target="_blank" rel="noopener noreferrer">宝塔使用手册</a> </li><li> <a class="footer-link" href="/new/btcode.html" target="_blank" rel="noopener noreferrer">Linux基础命令</a> </li><li> <a class="footer-link" href="/bbs/thread-20376-1-1.html" target="_blank" rel="noopener noreferrer">API接口文档</a> </li><li> <a class="footer-link" href="http://www.bt.cn/new/agreement_open.html" target="_blank" rel="noopener noreferrer">宝塔开源协议</a> </li> </ul> </div>  <div> <h3 class="font-semibold md:text-sm text-lg">快捷入口</h3> <ul class="footer-list"> <li> <a class="footer-link" href="/new/about.html" target="_blank" rel="noopener noreferrer">公司简介</a> </li><li> <a class="footer-link" href="/developer" target="_blank" rel="noopener noreferrer">开发者中心</a> </li><li> <a class="footer-link" href="https://www.butian.net/Company/60392" target="_blank" rel="noopener noreferrer">漏洞提交</a> </li><li> <a class="footer-link" href="https://github.com/aaPanel/BaoTa" target="_blank" rel="noopener noreferrer">GitHub</a> </li><li> <a class="footer-link" href="/new/auth.html" target="_blank" rel="noopener noreferrer">正版查询</a> </li> </ul> </div>  <div> <h3 class="text-lg font-semibold md:text-sm">联系我们</h3> <div class="footer-contact"> <span class="block whitespace-pre">商务合作QQ（商务）：394030111</span> <span class="block whitespace-pre">联系电话（客服）：0769-23030556</span> <span class="block whitespace-pre">周一至周六 9:15–12:30 14:00–18:15（节假日除外）</span> </div> <div class="footer-qrcode"> <div class="footer-qrcode-box support-btn-container"> <div class="footer-qrcode-img" id="footer-customer-btn" aria-describedby="" aria-expanded="false"> <img src="/static/astro/images/wechat/wechat-customer.png" alt="微信客服二维码" loading="lazy" decoding="async" fetchpriority="auto" width="60" height="60" class="footer-qr-thumbnail"> </div> <span class="text-xs">微信客服</span>  <div class="customer-service" id="footer-customer-qr-content"> <div class="qr-header"> <i class="fab fa-weixin wechat-icon"></i> <h4 class="qr-title">添加客服微信</h4> </div> <div class="qr-image-container"> <img src="/static/astro/images/wechat/wechat-customer.png" alt="客服微信二维码" loading="lazy" decoding="async" fetchpriority="auto" width="130" height="130" class="qr-image"> </div> <div class="qr-footer"> <i class="fas fa-qrcode scan-icon"></i> <span class="text-xs">使用微信扫一扫</span> </div> </div> </div> <div class="footer-qrcode-box support-btn-container"> <div class="footer-qrcode-img" id="footer-group-btn" aria-describedby="" aria-expanded="false"> <img src="/static/astro/images/wechat/wechat-group.png" alt="宝塔交流群二维码" loading="lazy" decoding="async" fetchpriority="auto" width="60" height="60" class="footer-qr-thumbnail"> </div> <span class="text-xs">宝塔交流群</span>  <div class="customer-service" id="footer-group-qr-content"> <div class="qr-header"> <i class="fab fa-weixin wechat-icon"></i> <h4 class="qr-title">加入宝塔交流群</h4> </div> <div class="qr-image-container"> <img src="/static/astro/images/wechat/wechat-group.png" alt="宝塔交流群二维码" loading="lazy" decoding="async" fetchpriority="auto" width="130" height="130" class="qr-image"> </div> <div class="qr-footer"> <i class="fas fa-qrcode scan-icon"></i> <span class="text-xs">使用微信扫一扫</span> </div> </div> </div> </div> </div> </div>  <div class="footer-bottom"> <div class="footer-bottom-links"> <div>  <div class="footer-bottom-links">  <div class="inline-flex items-center"> <a class="footer-bottom-link" href="/new/agreement_open.html" target="_blank" rel="noopener noreferrer">《开源许可协议》</a> </div> <span>|</span> <div class="inline-flex items-center"> <a class="footer-bottom-link" href="/new/agreement_user.html" target="_blank" rel="noopener noreferrer">《用户协议》</a> </div> <span>|</span> <div class="inline-flex items-center"> <a class="footer-bottom-link" href="/new/agreement_privacy.html" target="_blank" rel="noopener noreferrer">《隐私声明》</a> </div>  </div> </div> <span>|</span> <a class="footer-bottom-link flex items-center" href="https://v.yunaq.com/certificate?domain=www.bt.cn&amp;from=label&amp;code=90020" target="_blank" rel="noopener noreferrer"> <img src="https://aqyzmedia.yunaq.com/labels/label_sm_90020.png" alt="" loading="eager" decoding="async" fetchpriority="auto" width="50" height="16" class="inline-block h-[16px] align-middle opacity-70"> </a> </div> <div class="footer-bottom-meta"> <span>高新技术企业编号GR201944000059</span> <span>|</span> <div>  <div class="footer-bottom-links">  <div class="inline-flex items-center"> <a class="footer-bottom-link" href="https://tmsm.miit.gov.cn/" target="_blank" rel="noopener noreferrer">粤B2-20252835</a> </div> <span>|</span> <div class="inline-flex items-center"> <a class="footer-bottom-link" href="http://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">粤ICP备17030143号</a> </div> <span>|</span> <div class="inline-flex items-center"> <a class="footer-bottom-link" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44190002003211" target="_blank" rel="noopener noreferrer">粤公网安备44190002003211号</a> </div>  </div> </div> </div> <p class="text-center">
+Copyright © 2025 宝塔面板 | 让运维安全高效（www.bt.cn） 广东堡塔安全技术有限公司 版权所有
+        宝塔官网正在使用宝塔Linux面板维护管理并由尊云云服务器提供支持
+</p> <div class="text-center"> <div>  <div class="footer-bottom-links">  <div class="inline-flex items-center"> <a class="footer-bottom-link" href="/bbs/thread-60529-1-1.html" target="_blank" rel="noopener noreferrer">违法网站请勿向我司工作人员发起任何形式的人工服务请求，严禁使用宝塔面板从事任何非法活动</a> </div> <span>|</span> <div class="inline-flex items-center"> <a class="footer-bottom-link" href="/report" target="_blank" rel="noopener noreferrer">违规信息举报入口</a> </div> <span>|</span> <div class="inline-flex items-center"> <a class="footer-bottom-link" href="https://www.12377.cn" target="_blank" rel="noopener noreferrer">中国互联网举报中心</a> </div>  </div> </div> </div> </div> </div> </footer> <div class="floating-actions" id="floating-actions" data-astro-cid-twefo32w="">  <button class="floating-btn back-to-top" id="back-to-top" aria-label="返回顶部" title="返回顶部" data-astro-cid-twefo32w=""> <svg class="btn-icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-astro-cid-twefo32w=""> <path d="M855,628.2c10.1,9.4,10.6,25.1,1.3,35.1,0,0,0,0,0,0l-33.9,36.4c-9.4,10-25.1,10.6-35.1,1.2,0,0,0,0,0,0l-275.2-256.6-275.2,256.6c-10,9.4-25.7,8.8-35.1-1.2l-33.9-36.4c-9.4-10-8.9-25.8,1.2-35.1,0,0,0,0,0,0l308-287.2,15.7-16.8c5-5.4,12.2-8.3,19.5-7.9,7.3-.4,14.4,2.5,19.4,7.9l15.7,16.9,307.9,287.1Z" data-astro-cid-twefo32w=""></path> </svg> </button>  <div class="inline-block relative" data-astro-cid-twefo32w=""> <button class="floating-btn qr-service breathing-hidden" id="floating-qr-service" aria-label="客服二维码" title="联系客服" data-astro-cid-twefo32w="" aria-describedby="" aria-expanded="false"> <svg class="btn-icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-astro-cid-twefo32w=""> <path d="M902.4,431.4h-23.1c-1.2-203-165.1-367.5-367.3-367.5S145.9,228.4,144.8,431.4h-23.1c-25.3,0-45.9,20.5-45.9,45.9v206.6c0,25.4,20.5,45.9,45.9,45.9h60.8c52.9,108.3,157.2,186.7,280.8,203.3,16.8,16,42.6,26.4,71.7,26.4,50.7,0,91.9-30.8,91.9-68.9s-41.2-68.9-91.9-68.9-68.2,16.3-82.9,39.6c-80.5-16.6-150.9-66.1-194.2-137.1,14.6-7.7,24.5-22.7,24.5-40.3v-206.5c0-25.4-20.5-45.9-45.9-45.9h-22.9c1.2-164.8,134.6-298.4,298.4-298.4s297.3,133.6,298.4,298.4h-22.9c-25.3,0-45.9,20.5-45.9,45.9v206.6c0,25.4,20.5,45.9,45.9,45.9h114.8c25.4,0,45.9-20.5,45.9-45.9v-206.6c.1-25.3-20.4-45.9-45.8-45.9ZM144.7,500.3h68.9v160.7h-68.9v-160.7ZM879.5,661h-68.9v-160.7h68.9v160.7Z" data-astro-cid-twefo32w=""></path> </svg> </button>  <div class="customer-service" id="floating-qr-content" data-astro-cid-twefo32w=""> <div class="qr-header" data-astro-cid-twefo32w=""> <i class="fab fa-weixin wechat-icon" data-astro-cid-twefo32w=""></i> <h4 class="qr-title" data-astro-cid-twefo32w="">添加客服微信</h4> </div> <div class="qr-image-container" data-astro-cid-twefo32w=""> <img src="/static/astro/images/wechat/wechat-all.png" alt="客服微信二维码" data-astro-cid-twefo32w="true" loading="lazy" decoding="async" fetchpriority="auto" width="130" height="130" class="qr-image"> </div> <div class="qr-footer" data-astro-cid-twefo32w=""> <i class="fas fa-qrcode scan-icon" data-astro-cid-twefo32w=""></i> <span class="text-xs" data-astro-cid-twefo32w="">使用微信扫一扫</span> </div> <div class="text-xs text-center" data-astro-cid-twefo32w="">工作时间：9:10-18:00</div> </div> </div> </div>  <script type="module" src="/static/astro/js/Layout.astro_astro_type_script_index_0_lang.js?version=1769846721"></script>   <script type="module" src="/static/astro/js/index.astro_astro_type_script_index_0_lang2.js?version=1769846721"></script><div class="tooltip tooltip--theme-light support-tooltip-popper" id="tooltip-5idlw9t8i" role="tooltip" aria-hidden="true" data-popper-reference-hidden="" data-popper-placement="bottom" style="transition: opacity 0.2s, visibility 0.2s; --arrow-size: 8px; --arrow-offset: 4px; position: absolute; inset: 0px auto auto 0px; margin: 0px; pointer-events: none; transform: translate(0px, 8px);"><div class="tooltip__content"><div class="customer-service" id="support-qr-content" style="display: block;"> <div class="qr-header"> <i class="fab fa-weixin wechat-icon"></i> <h4 class="qr-title">添加客服微信</h4> </div> <div class="qr-image-container"> <img src="/static/astro/images/wechat/wechat-all.png" alt="客服微信二维码" loading="lazy" decoding="async" fetchpriority="auto" width="130" height="130" class="qr-image"> </div> <div class="qr-footer"> <i class="fas fa-qrcode scan-icon"></i> <span class="text-xs">使用微信扫一扫</span> </div> <div class="text-xs text-center">工作时间：9:10-18:00</div> </div></div></div><div class="tooltip tooltip--theme-light footer-customer-tooltip-popper" id="tooltip-th85np5p2" role="tooltip" aria-hidden="true" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="transition: opacity 0.2s, visibility 0.2s; --arrow-size: 8px; --arrow-offset: 4px; position: absolute; inset: auto auto 0px 0px; margin: 0px; pointer-events: none; transform: translate(673px, 3524px);"><div class="tooltip__content"><div class="customer-service" id="footer-customer-qr-content" style="display: block;"> <div class="qr-header"> <i class="fab fa-weixin wechat-icon"></i> <h4 class="qr-title">添加客服微信</h4> </div> <div class="qr-image-container"> <img src="/static/astro/images/wechat/wechat-customer.png" alt="客服微信二维码" loading="lazy" decoding="async" fetchpriority="auto" width="130" height="130" class="qr-image"> </div> <div class="qr-footer"> <i class="fas fa-qrcode scan-icon"></i> <span class="text-xs">使用微信扫一扫</span> </div> </div></div></div><div class="tooltip tooltip--theme-light floating-qr-tooltip" id="tooltip-5lpptcg6q" role="tooltip" aria-hidden="true" data-popper-placement="left-end" style="transition: opacity 0.2s, visibility 0.2s; --arrow-size: 8px; --arrow-offset: 4px; position: absolute; inset: auto 0px 0px auto; margin: 0px; pointer-events: none; transform: translate(-55px, -20px);"><div class="tooltip__content"><div class="customer-service" id="floating-qr-content" data-astro-cid-twefo32w="" style="display: block;"> <div class="qr-header" data-astro-cid-twefo32w=""> <i class="fab fa-weixin wechat-icon" data-astro-cid-twefo32w=""></i> <h4 class="qr-title" data-astro-cid-twefo32w="">添加客服微信</h4> </div> <div class="qr-image-container" data-astro-cid-twefo32w=""> <img src="/static/astro/images/wechat/wechat-all.png" alt="客服微信二维码" data-astro-cid-twefo32w="true" loading="lazy" decoding="async" fetchpriority="auto" width="130" height="130" class="qr-image"> </div> <div class="qr-footer" data-astro-cid-twefo32w=""> <i class="fas fa-qrcode scan-icon" data-astro-cid-twefo32w=""></i> <span class="text-xs" data-astro-cid-twefo32w="">使用微信扫一扫</span> </div> <div class="text-xs text-center" data-astro-cid-twefo32w="">工作时间：9:10-18:00</div> </div></div></div><div class="tooltip tooltip--theme-light footer-group-tooltip-popper" id="tooltip-bsin9c3s8" role="tooltip" aria-hidden="true" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="transition: opacity 0.2s, visibility 0.2s; --arrow-size: 8px; --arrow-offset: 4px; position: absolute; inset: auto auto 0px 0px; margin: 0px; pointer-events: none; transform: translate(757px, 3524px);"><div class="tooltip__content"><div class="customer-service" id="footer-group-qr-content" style="display: block;"> <div class="qr-header"> <i class="fab fa-weixin wechat-icon"></i> <h4 class="qr-title">加入宝塔交流群</h4> </div> <div class="qr-image-container"> <img src="/static/astro/images/wechat/wechat-group.png" alt="宝塔交流群二维码" loading="lazy" decoding="async" fetchpriority="auto" width="130" height="130" class="qr-image"> </div> <div class="qr-footer"> <i class="fas fa-qrcode scan-icon"></i> <span class="text-xs">使用微信扫一扫</span> </div> </div></div></div><div class="tooltip tooltip--theme-light support-tooltip-popper" id="tooltip-5mn7hef7x" role="tooltip" aria-hidden="true" data-popper-placement="bottom" style="transition: opacity 0.2s, visibility 0.2s; --arrow-size: 8px; --arrow-offset: 4px; position: absolute; inset: 0px auto auto 0px; margin: 0px; pointer-events: none; transform: translate(595px, 280px);"><div class="tooltip__content"><div class="customer-service" id="index-support-qr-content" style="display: block;"> <div class="qr-header"> <i class="fab fa-weixin wechat-icon"></i> <h4 class="qr-title">添加客服微信</h4> </div> <div class="qr-image-container"> <img src="/static/astro/images/wechat/wechat-all.png" alt="客服微信二维码" loading="lazy" decoding="async" fetchpriority="auto" width="130" height="130" class="qr-image"> </div> <div class="qr-footer"> <i class="fas fa-qrcode scan-icon"></i> <span class="text-xs">使用微信扫一扫</span> </div> <div class="text-xs text-center">工作时间：9:10-18:00</div> </div></div></div><div class="tooltip tooltip--theme-light support-tooltip-popper" id="tooltip-ffgcqo219" role="tooltip" aria-hidden="true" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="left" style="transition: opacity 0.2s, visibility 0.2s; --arrow-size: 8px; --arrow-offset: 4px; position: absolute; inset: 0px 0px auto auto; margin: 0px; pointer-events: none; transform: translate(180px, 234px);"><div class="tooltip__content"><div class="customer-service" id="index-support-qr-content" style="display: block;"> <div class="qr-header"> <i class="fab fa-weixin wechat-icon"></i> <h4 class="qr-title">添加客服微信</h4> </div> <div class="qr-image-container"> <img src="/static/astro/images/wechat/wechat-all.png" alt="客服微信二维码" loading="lazy" decoding="async" fetchpriority="auto" width="130" height="130" class="qr-image"> </div> <div class="qr-footer"> <i class="fas fa-qrcode scan-icon"></i> <span class="text-xs">使用微信扫一扫</span> </div> <div class="text-xs text-center">工作时间：9:10-18:00</div> </div></div></div><div class="tooltip tooltip--theme-light support-tooltip-popper" id="tooltip-tbkgo5iuc" role="tooltip" aria-hidden="true" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="left" style="transition: opacity 0.2s, visibility 0.2s; --arrow-size: 8px; --arrow-offset: 4px; position: absolute; inset: 0px 0px auto auto; margin: 0px; pointer-events: none; transform: translate(1262px, 182px);"><div class="tooltip__content"><div class="customer-service" id="index-support-qr-content" style="display: block;"> <div class="qr-header"> <i class="fab fa-weixin wechat-icon"></i> <h4 class="qr-title">添加客服微信</h4> </div> <div class="qr-image-container"> <img src="/static/astro/images/wechat/wechat-all.png" alt="客服微信二维码" loading="lazy" decoding="async" fetchpriority="auto" width="130" height="130" class="qr-image"> </div> <div class="qr-footer"> <i class="fas fa-qrcode scan-icon"></i> <span class="text-xs">使用微信扫一扫</span> </div> <div class="text-xs text-center">工作时间：9:10-18:00</div> </div></div></div></body>

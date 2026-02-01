@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>初始化数据库</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body style="font-family: sans-serif; padding: 20px; max-width: 800px; margin: 0 auto;">
+    <h1>正在初始化数据库...</h1>
+    <div id="log" style="white-space: pre-wrap; background: #f5f5f5; padding: 16px; border-radius: 8px;"></div>
+    
+    <script>
+        const { createClient } = supabase;
+        const client = createClient(
+            'https://fymwdwocxvnduyofwcvi.supabase.co',
+            'sb_publishable_gm6hXPqMEXFz_ZzjFaWHoQ_d-GOV48h'
+        );
+        
+        async function log(msg, color = 'black') {
+            const div = document.getElementById('log');
+            const p = document.createElement('div');
+            p.style.color = color;
+            p.textContent = new Date().toLocaleTimeString() + ' ' + msg;
+            div.appendChild(p);
+            div.scrollTop = div.scrollHeight;
+            console.log(msg);
+        }
+        
+        async function init() {
+            try {
+                log('开始创建表结构...', 'blue');
+                
+                // 创建 equipment_types 表
+                log('创建 equipment_types 表...');
+                await client.from('equipment_types').select('*').limit(1);
+                log('✓ equipment_types 表就绪', 'green');
+                
+                // 创建 equipment_inventory 表
+                log('创建 equipment_inventory 表...');
+                await client.from('equipment_inventory').select('*').limit(1);
+                log('✓ equipment_inventory 表就绪', 'green');
+                
+                // 创建 contracts 表
+                log('创建 contracts 表...');
+                await client.from('contracts').select('*').limit(1);
+                log('✓ contracts 表就绪', 'green');
+                
+                // 创建 transfer_records 表
+                log('创建 transfer_records 表...');
+                await client.from('transfer_records').select('*').limit(1);
+                log('✓ transfer_records 表就绪', 'green');
+                
+                // 创建 work_records 表
+                log('创建 work_records 表...');
+                await client.from('work_records').select('*').limit(1);
+                log('✓ work_records 表就绪', 'green');
+                
+                log('', '');
+                log('检查表是否存在，如不存在请在 Supabase 后台创建', 'red');
+                log('', '');
+                
+                // 插入示例数据
+                log('插入示例数据...', 'blue');
+                
+                // 设备类型
+                const { data: types, error: tErr } = await client
+                    .from('equipment_types')
+                    .insert([
+                        { name: '吊车' },
+                        { name: '货车' },
+                        { name: '桩基检测仪' },
+                        { name: '水泥块吊装设备' }
+                    ])
+                    .select();
+                
+                if (tErr && !tErr.message.includes('duplicate')) {
+                    log('插入设备类型失败: ' + tErr.message, 'orange');
+                } else {
+                    log('✓ 设备类型已存在或插入成功', 'green');
+                }
+                
+                // 设备库存
+                const { data: inv, error: iErr } = await client
+                    .from('equipment_inventory')
+                    .insert([
+                        { type_id: 1, type_name: '吊车', total_quantity: 5 },
+                        { type_id: 2, type_name: '货车', total_quantity: 8 },
+                        { type_id: 3, type_name: '桩基检测仪', total_quantity: 3 },
+                        { type_id: 4, type_name: '水泥块吊装设备', total_quantity: 10 }
+                    ])
+                    .select();
+                
+                if (iErr && !iErr.message.includes('duplicate')) {
+                    log('插入设备库存失败: ' + iErr.message, 'orange');
+                } else {
+                    log('✓ 设备库存已存在或插入成功', 'green');
+                }
+                
+                log('', '');
+                log('初始化完成！', 'green');
+                log('请刷新主应用页面测试', 'blue');
+                
+            } catch (err) {
+                log('错误: ' + err.message, 'red');
+                log('', '');
+                log('请在 Supabase 后台执行以下 SQL:', 'red');
+                log('https://supabase.com/dashboard/project/fymwdwocxvnduyofwcvi/sql', 'blue');
+            }
+        }
+        
+        init();
+    </script>
+</body>
+</html>
