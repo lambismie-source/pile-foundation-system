@@ -1,5 +1,9 @@
 /**
  * 日常工作量登记模块 - 本地存储版
+ * 
+ * 功能：
+ * 1. 现场安装工作量登记（吊车、货车工作量明细）
+ * 2. 当天产值工作量记录（自动调用项目配置的单价）
  */
 
 var WorkPage = {
@@ -7,7 +11,6 @@ var WorkPage = {
         var data = StorageManager.getAll();
         var workRecords = data.workRecords || [];
         var contracts = data.contracts || [];
-        var priceTypes = StorageManager.getAllPriceTypes();
         
         var today = new Date().toISOString().slice(0, 10);
         
@@ -16,10 +19,9 @@ var WorkPage = {
             if (r.workDate === today || r.work_date === today) todayRecords.push(r);
         });
         
-        // 计算实际产值（包含现场安装和产值工作量）
+        // 计算今日产值
         var todayOutputValue = 0;
         todayRecords.forEach(function(r) {
-            // 产值工作量
             if (r.outputItems && Array.isArray(r.outputItems)) {
                 r.outputItems.forEach(function(item) {
                     todayOutputValue += (item.amount || 0);
@@ -70,26 +72,23 @@ var WorkPage = {
         html += '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>货车工作量</h5>';
         html += '<div class="form-row"><div class="form-group"><label class="form-label">运输水泥块数量（块）</label><input type="number" class="form-input" id="truck-blocks" placeholder="请输入数量" min="0" value="0"></div>';
         html += '<div class="form-group"><label class="form-label">运输钢梁数量（根）</label><input type="number" class="form-input" id="truck-beams" placeholder="请输入数量" min="0" value="0"></div></div></div>';
-html += '</div>';
+        html += '</div>';
         
         // 模块二：当天产值工作量记录
         html += '<div style="margin-top: 24px; padding: 20px; background: #fff7e6; border-radius: 8px; border: 1px solid #ffd591;">';
         html += '<h4 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; color: #d46b08;">';
         html += '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>当天产值工作量记录</h4>';
-        html += '<p style="font-size: 12px; color: #999; margin-bottom: 16px;">选择单价类型、输入数量和单价，系统将自动计算产值</p>';
+        html += '<p style="font-size: 12px; color: #999; margin-bottom: 16px;">请先选择项目，系统将自动加载该项目的单价配置，只需输入数量即可自动计算产值</p>';
         
-        // 产值项目输入区域（显示单价和产值）
+        // 产值项目输入区域
         html += '<div id="output-items-container">';
         html += '<div class="output-item-row" style="background: #fff; padding: 16px; border-radius: 6px; margin-bottom: 12px;">';
         html += '<div class="form-row">';
-        html += '<div class="form-group"><label class="form-label">单价类型</label><select class="form-select output-price-type" name="output-price-type[]" onchange="WorkPage.calculateOutputAmount(this)">';
-        html += '<option value="">请选择单价类型</option>';
-        priceTypes.forEach(function(type) {
-            html += '<option value="' + type.name + '" data-unit="' + type.unit + '">' + type.name + ' (' + type.unit + ')</option>';
-        });
+        html += '<div class="form-group"><label class="form-label">单价类型</label><select class="form-select output-price-type" name="output-price-type[]" onchange="WorkPage.onPriceTypeChange(this)">';
+        html += '<option value="">请先选择项目</option>';
         html += '</select></div>';
         html += '<div class="form-group"><label class="form-label">数量</label><input type="number" class="form-input output-quantity" name="output-quantity[]" placeholder="数量" min="0" value="0" oninput="WorkPage.calculateOutputAmount(this)"></div>';
-        html += '<div class="form-group"><label class="form-label">单价（元）</label><input type="number" class="form-input output-unit-price" name="output-unit-price[]" placeholder="单价" min="0" step="0.01" value="0" oninput="WorkPage.calculateOutputAmount(this)"></div>';
+        html += '<div class="form-group"><label class="form-label">单价（元）</label><input type="text" class="form-input output-unit-price" name="output-unit-price[]" placeholder="-" readonly style="background: #f5f5f5; color: #666;"></div>';
         html += '<div class="form-group"><label class="form-label">产值（元）</label><input type="text" class="form-input output-amount" name="output-amount[]" placeholder="0.00" readonly style="background: #f5f5f5; color: var(--primary-color); font-weight: 600;"></div>';
         html += '<div class="form-group" style="display: flex; align-items: flex-end;"><button type="button" class="btn btn-outline" onclick="WorkPage.addOutputRow()">+</button></div>';
         html += '</div>';
@@ -130,30 +129,63 @@ html += '</div>';
         container.innerHTML = html;
     },
     
-    // 项目变更时刷新单价类型选项
+    // 项目变更时加载该项目配置的单价
     onProjectChange: function() {
         var projectId = document.getElementById('work-project').value;
-        if (!projectId) return;
+        var selects = document.querySelectorAll('select[name="output-price-type[]"]');
+        
+        if (!projectId) {
+            // 未选择项目，重置所有下拉框
+            selects.forEach(function(select) {
+                select.innerHTML = '<option value="">请先选择项目</option>';
+            });
+            // 清空单价输入框
+            document.querySelectorAll('.output-unit-price').forEach(function(input) {
+                input.value = '';
+            });
+            WorkPage.updateTotalAmount();
+            return;
+        }
         
         var contract = StorageManager.getById('contracts', projectId);
-        if (!contract || !contract.prices || contract.prices.length === 0) return;
+        if (!contract || !contract.prices || contract.prices.length === 0) {
+            // 项目没有配置单价
+            selects.forEach(function(select) {
+                select.innerHTML = '<option value="">该项目暂无单价配置</option>';
+            });
+            UIUtils.showToast('请先在该项目中配置单价', 'warning');
+            return;
+        }
         
-        // 更新所有单价类型下拉框，只显示该项目已配置的单价
-        var selects = document.querySelectorAll('select[name="output-price-type[]"]');
-        if (selects.length === 0) return;
-        
-        var priceNames = [];
-        contract.prices.forEach(function(p) {
-            priceNames.push(p.name);
-        });
-        
+        // 更新所有单价类型下拉框，显示该项目已配置的单价
         selects.forEach(function(select) {
-            for (var i = 0; i < select.options.length; i++) {
-                var option = select.options[i];
-                if (option.value === '') continue;
-                select.options[i].disabled = priceNames.indexOf(option.value) === -1;
-            }
+            var optionsHtml = '<option value="">请选择单价类型</option>';
+            contract.prices.forEach(function(price) {
+                optionsHtml += '<option value="' + price.name + '" data-unit-price="' + (price.unitPrice || 0) + '" data-unit="' + (price.unit || '次') + '">' + price.name + '（' + (price.unit || '次') + '：¥' + (price.unitPrice || 0).toFixed(2) + '）</option>';
+            });
+            select.innerHTML = optionsHtml;
         });
+    },
+    
+    // 单价类型变更时自动填充单价
+    onPriceTypeChange: function(selectElement) {
+        var row = selectElement.closest('.output-item-row');
+        if (!row) return;
+        
+        var selectedOption = selectElement.options[selectElement.selectedIndex];
+        var unitPriceInput = row.querySelector('.output-unit-price');
+        var quantityInput = row.querySelector('.output-quantity');
+        
+        if (selectedOption.value) {
+            // 自动填充单价
+            var unitPrice = selectedOption.getAttribute('data-unit-price') || 0;
+            unitPriceInput.value = parseFloat(unitPrice).toFixed(2);
+        } else {
+            unitPriceInput.value = '';
+        }
+        
+        // 重新计算产值
+        WorkPage.calculateOutputAmount(quantityInput);
     },
     
     // 计算产值金额
@@ -190,17 +222,27 @@ html += '</div>';
         var container = document.getElementById('output-items-container');
         if (!container) return;
         
-        var priceTypes = StorageManager.getAllPriceTypes();
-        var optionsHtml = '<option value="">请选择单价类型</option>';
-        priceTypes.forEach(function(type) {
-            optionsHtml += '<option value="' + type.name + '" data-unit="' + type.unit + '">' + type.name + ' (' + type.unit + ')</option>';
-        });
+        var projectId = document.getElementById('work-project').value;
+        var optionsHtml = '';
+        
+        if (projectId) {
+            var contract = StorageManager.getById('contracts', projectId);
+            if (contract && contract.prices && contract.prices.length > 0) {
+                contract.prices.forEach(function(price) {
+                    optionsHtml += '<option value="' + price.name + '" data-unit-price="' + (price.unitPrice || 0) + '" data-unit="' + (price.unit || '次') + '">' + price.name + '（' + (price.unit || '次') + '：¥' + (price.unitPrice || 0).toFixed(2) + '）</option>';
+                });
+            }
+        }
+        
+        if (!optionsHtml) {
+            optionsHtml = '<option value="">请先选择项目</option>';
+        }
         
         var rowHtml = '<div class="output-item-row" style="background: #fff; padding: 16px; border-radius: 6px; margin-bottom: 12px;">';
         rowHtml += '<div class="form-row">';
-        rowHtml += '<div class="form-group"><label class="form-label">单价类型</label><select class="form-select output-price-type" name="output-price-type[]" onchange="WorkPage.calculateOutputAmount(this)">' + optionsHtml + '</select></div>';
+        rowHtml += '<div class="form-group"><label class="form-label">单价类型</label><select class="form-select output-price-type" name="output-price-type[]" onchange="WorkPage.onPriceTypeChange(this)"><option value="">请选择单价类型</option>' + optionsHtml + '</select></div>';
         rowHtml += '<div class="form-group"><label class="form-label">数量</label><input type="number" class="form-input output-quantity" name="output-quantity[]" placeholder="数量" min="0" value="0" oninput="WorkPage.calculateOutputAmount(this)"></div>';
-        rowHtml += '<div class="form-group"><label class="form-label">单价（元）</label><input type="number" class="form-input output-unit-price" name="output-unit-price[]" placeholder="单价" min="0" step="0.01" value="0" oninput="WorkPage.calculateOutputAmount(this)"></div>';
+        rowHtml += '<div class="form-group"><label class="form-label">单价（元）</label><input type="text" class="form-input output-unit-price" name="output-unit-price[]" placeholder="-" readonly style="background: #f5f5f5; color: #666;"></div>';
         rowHtml += '<div class="form-group"><label class="form-label">产值（元）</label><input type="text" class="form-input output-amount" name="output-amount[]" placeholder="0.00" readonly style="background: #f5f5f5; color: var(--primary-color); font-weight: 600;"></div>';
         rowHtml += '<div class="form-group" style="display: flex; align-items: flex-end;"><button type="button" class="btn btn-outline" onclick="WorkPage.removeOutputRow(this)">-</button></div>';
         rowHtml += '</div>';
@@ -290,6 +332,10 @@ html += '</div>';
             return;
         }
         
+        // 获取项目的单价配置
+        var contract = StorageManager.getById('contracts', project);
+        var projectPrices = contract && contract.prices ? contract.prices : [];
+        
         // 从表单中读取产值工作量
         var outputItems = [];
         var priceTypeSelects = document.querySelectorAll('select[name="output-price-type[]"]');
@@ -304,12 +350,11 @@ html += '</div>';
             var amount = parseFloat(amountInputs[i].value) || 0;
             
             if (typeName && quantity > 0) {
-                // 获取单位
+                // 获取单位（从项目配置中获取）
                 var unit = '次';
-                var priceTypes = StorageManager.getAllPriceTypes();
-                for (var j = 0; j < priceTypes.length; j++) {
-                    if (priceTypes[j].name === typeName) {
-                        unit = priceTypes[j].unit || '次';
+                for (var j = 0; j < projectPrices.length; j++) {
+                    if (projectPrices[j].name === typeName) {
+                        unit = projectPrices[j].unit || '次';
                         break;
                     }
                 }
@@ -353,47 +398,79 @@ html += '</div>';
         document.getElementById('truck-beams').value = record.truckBeams || record.truck_beams || 0;
         document.getElementById('work-remark').value = record.remark || '';
         
-        // 加载产值项目
-        var outputItems = record.outputItems || [];
+        // 加载项目的单价配置
+        this.onProjectChange();
+        
+        // 清除原有的产值行
         var container = document.getElementById('output-items-container');
         if (container) {
-            var priceTypes = StorageManager.getAllPriceTypes();
-            container.innerHTML = '';
-            
-            outputItems.forEach(function(item) {
-                var optionsHtml = '';
-                priceTypes.forEach(function(type) {
-                    var selected = type.name === item.name ? ' selected' : '';
-                    optionsHtml += '<option value="' + type.name + '" data-unit="' + type.unit + '"' + selected + '>' + type.name + ' (' + type.unit + ')</option>';
-                });
-                
-                var rowHtml = '<div class="output-item-row" style="background: #fff; padding: 16px; border-radius: 6px; margin-bottom: 12px;">';
-                rowHtml += '<div class="form-row">';
-                rowHtml += '<div class="form-group"><label class="form-label">单价类型</label><select class="form-select output-price-type" name="output-price-type[]" onchange="WorkPage.calculateOutputAmount(this)">' + optionsHtml + '</select></div>';
-                rowHtml += '<div class="form-group"><label class="form-label">数量</label><input type="number" class="form-input output-quantity" name="output-quantity[]" placeholder="数量" min="0" value="' + item.quantity + '" oninput="WorkPage.calculateOutputAmount(this)"></div>';
-                rowHtml += '<div class="form-group"><label class="form-label">单价（元）</label><input type="number" class="form-input output-unit-price" name="output-unit-price[]" placeholder="单价" min="0" step="0.01" value="' + item.unitPrice + '" oninput="WorkPage.calculateOutputAmount(this)"></div>';
-                rowHtml += '<div class="form-group"><label class="form-label">产值（元）</label><input type="text" class="form-input output-amount" name="output-amount[]" placeholder="0.00" value="' + item.amount.toFixed(2) + '" readonly style="background: #f5f5f5; color: var(--primary-color); font-weight: 600;"></div>';
-                rowHtml += '<div class="form-group" style="display: flex; align-items: flex-end;"><button type="button" class="btn btn-outline" onclick="WorkPage.removeOutputRow(this)">-</button></div>';
-                rowHtml += '</div>';
-                rowHtml += '</div>';
-                container.insertAdjacentHTML('beforeend', rowHtml);
+            var rows = container.querySelectorAll('.output-item-row');
+            rows.forEach(function(row, index) {
+                if (index > 0) row.remove();
             });
             
-            // 更新合计
-            this.updateTotalAmount();
+            // 如果有保存的产值数据，填充到第一行
+            if (record.outputItems && record.outputItems.length > 0) {
+                var firstRow = container.querySelector('.output-item-row');
+                if (firstRow) {
+                    var select = firstRow.querySelector('.output-price-type');
+                    var quantityInput = firstRow.querySelector('.output-quantity');
+                    var unitPriceInput = firstRow.querySelector('.output-unit-price');
+                    var amountInput = firstRow.querySelector('.output-amount');
+                    
+                    var firstItem = record.outputItems[0];
+                    select.value = firstItem.name;
+                    quantityInput.value = firstItem.quantity;
+                    unitPriceInput.value = firstItem.unitPrice.toFixed(2);
+                    amountInput.value = firstItem.amount.toFixed(2);
+                }
+                
+                // 添加额外的行
+                for (var i = 1; i < record.outputItems.length; i++) {
+                    var item = record.outputItems[i];
+                    this.addOutputRow();
+                    
+                    var rows = container.querySelectorAll('.output-item-row');
+                    var newRow = rows[rows.length - 1];
+                    var select = newRow.querySelector('.output-price-type');
+                    var quantityInput = newRow.querySelector('.output-quantity');
+                    var unitPriceInput = newRow.querySelector('.output-unit-price');
+                    var amountInput = newRow.querySelector('.output-amount');
+                    
+                    select.value = item.name;
+                    quantityInput.value = item.quantity;
+                    unitPriceInput.value = item.unitPrice.toFixed(2);
+                    amountInput.value = item.amount.toFixed(2);
+                }
+            }
         }
         
+        // 更新合计
+        this.updateTotalAmount();
+        
+        // 滚动到表单
         this.scrollToForm();
         
-        document.getElementById('work-form').onsubmit = function(e) {
-            e.preventDefault();
-            WorkPage.updateWork(id);
-        };
+        // 更改提交按钮为更新
+        var form = document.getElementById('work-form');
+        form.onsubmit = function(e) { WorkPage.updateWork(e, id); };
+        var submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.textContent = '更新登记';
+        submitBtn.classList.remove('btn-primary');
+        submitBtn.classList.add('btn-warning');
         
-        UIUtils.showToast('请修改表单后重新提交', 'info');
+        // 添加取消按钮
+        var cancelBtn = document.createElement('button');
+        cancelBtn.type = 'button';
+        cancelBtn.className = 'btn btn-outline';
+        cancelBtn.textContent = '取消';
+        cancelBtn.onclick = function() { WorkPage.resetForm(); };
+        submitBtn.parentNode.insertBefore(cancelBtn, submitBtn);
     },
     
-    updateWork: function(id) {
+    updateWork: function(event, id) {
+        event.preventDefault();
+        
         var workDate = document.getElementById('work-date').value;
         var project = document.getElementById('work-project').value;
         var craneBlocks = parseInt(document.getElementById('crane-blocks').value) || 0;
@@ -402,7 +479,15 @@ html += '</div>';
         var truckBeams = parseInt(document.getElementById('truck-beams').value) || 0;
         var remark = document.getElementById('work-remark').value.trim();
         
-        // 从表单中读取产值工作量
+        if (!project) {
+            UIUtils.showToast('请选择项目', 'warning');
+            return;
+        }
+        
+        // 获取项目的单价配置
+        var contract = StorageManager.getById('contracts', project);
+        var projectPrices = contract && contract.prices ? contract.prices : [];
+        
         var outputItems = [];
         var priceTypeSelects = document.querySelectorAll('select[name="output-price-type[]"]');
         var quantityInputs = document.querySelectorAll('input[name="output-quantity[]"]');
@@ -416,12 +501,10 @@ html += '</div>';
             var amount = parseFloat(amountInputs[i].value) || 0;
             
             if (typeName && quantity > 0) {
-                // 获取单位
                 var unit = '次';
-                var priceTypes = StorageManager.getAllPriceTypes();
-                for (var j = 0; j < priceTypes.length; j++) {
-                    if (priceTypes[j].name === typeName) {
-                        unit = priceTypes[j].unit || '次';
+                for (var j = 0; j < projectPrices.length; j++) {
+                    if (projectPrices[j].name === typeName) {
+                        unit = projectPrices[j].unit || '次';
                         break;
                     }
                 }
@@ -436,7 +519,7 @@ html += '</div>';
             }
         }
         
-        StorageManager.update('workRecords', id, {
+        var updates = {
             workDate: workDate,
             project: project,
             craneBlocks: craneBlocks,
@@ -445,65 +528,67 @@ html += '</div>';
             truckBeams: truckBeams,
             outputItems: outputItems,
             remark: remark
-        });
+        };
         
-        UIUtils.showToast('记录更新成功', 'success');
+        StorageManager.update('workRecords', id, updates);
+        UIUtils.showToast('工作量更新成功', 'success');
         this.resetForm();
         PageNavigator.loadPage('work');
     },
     
     deleteWork: function(id) {
-        if (confirm('确定要删除该工作量记录吗？')) {
-            if (StorageManager.delete('workRecords', id)) {
-                UIUtils.showToast('记录删除成功', 'success');
-                PageNavigator.loadPage('work');
-            }
+        if (!confirm('确定要删除这条工作量记录吗？')) return;
+        
+        if (StorageManager.deleteRecord('workRecords', id)) {
+            UIUtils.showToast('删除成功', 'success');
+            PageNavigator.loadPage('work');
+        } else {
+            UIUtils.showToast('删除失败', 'error');
         }
     },
     
     resetForm: function() {
         var today = new Date().toISOString().slice(0, 10);
-        document.getElementById('work-form').reset();
         document.getElementById('work-date').value = today;
+        document.getElementById('work-project').value = '';
         document.getElementById('crane-blocks').value = 0;
         document.getElementById('crane-beams').value = 0;
         document.getElementById('truck-blocks').value = 0;
         document.getElementById('truck-beams').value = 0;
+        document.getElementById('work-remark').value = '';
         
-        // 重置产值项目为初始状态
+        // 重置产值项目
         var container = document.getElementById('output-items-container');
         if (container) {
-            var priceTypes = StorageManager.getAllPriceTypes();
-            var optionsHtml = '<option value="">请选择单价类型</option>';
-            priceTypes.forEach(function(type) {
-                optionsHtml += '<option value="' + type.name + '" data-unit="' + type.unit + '">' + type.name + ' (' + type.unit + ')</option>';
-            });
-            
             container.innerHTML = '<div class="output-item-row" style="background: #fff; padding: 16px; border-radius: 6px; margin-bottom: 12px;">' +
                 '<div class="form-row">' +
-                '<div class="form-group"><label class="form-label">单价类型</label><select class="form-select output-price-type" name="output-price-type[]" onchange="WorkPage.calculateOutputAmount(this)">' + optionsHtml + '</select></div>' +
+                '<div class="form-group"><label class="form-label">单价类型</label><select class="form-select output-price-type" name="output-price-type[]" onchange="WorkPage.onPriceTypeChange(this)"><option value="">请先选择项目</option></select></div>' +
                 '<div class="form-group"><label class="form-label">数量</label><input type="number" class="form-input output-quantity" name="output-quantity[]" placeholder="数量" min="0" value="0" oninput="WorkPage.calculateOutputAmount(this)"></div>' +
-                '<div class="form-group"><label class="form-label">单价（元）</label><input type="number" class="form-input output-unit-price" name="output-unit-price[]" placeholder="单价" min="0" step="0.01" value="0" oninput="WorkPage.calculateOutputAmount(this)"></div>' +
+                '<div class="form-group"><label class="form-label">单价（元）</label><input type="text" class="form-input output-unit-price" name="output-unit-price[]" placeholder="-" readonly style="background: #f5f5f5; color: #666;"></div>' +
                 '<div class="form-group"><label class="form-label">产值（元）</label><input type="text" class="form-input output-amount" name="output-amount[]" placeholder="0.00" readonly style="background: #f5f5f5; color: var(--primary-color); font-weight: 600;"></div>' +
                 '<div class="form-group" style="display: flex; align-items: flex-end;"><button type="button" class="btn btn-outline" onclick="WorkPage.addOutputRow()">+</button></div>' +
-                '</div>' +
-                '</div>';
-            
-            // 重置合计
-            var totalSpan = document.getElementById('output-total-amount');
-            if (totalSpan) totalSpan.textContent = '0.00';
+                '</div></div>';
         }
         
-        document.getElementById('work-form').onsubmit = function(e) {
-            WorkPage.submitWork(e);
-        };
+        document.getElementById('output-total-amount').textContent = '0.00';
+        
+        // 重置表单提交
+        var form = document.getElementById('work-form');
+        if (form) {
+            form.onsubmit = function(e) { WorkPage.submitWork(e); };
+            var submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.textContent = '提交登记';
+                submitBtn.classList.add('btn-primary');
+                submitBtn.classList.remove('btn-warning');
+            }
+        }
     },
     
     scrollToForm: function() {
-        document.querySelector('.card').scrollIntoView({ behavior: 'smooth' });
-    },
-    
-    showAddModal: function() {
-        this.scrollToForm();
+        var form = document.querySelector('.card .card-header h3');
+        if (form) {
+            form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
 };
