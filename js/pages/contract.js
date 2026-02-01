@@ -197,13 +197,18 @@ var ContractPage = {
                 return;
             }
             
+            // 获取原有的prices数组
+            var contract = StorageManager.getById('contracts', id);
+            var existingPrices = contract ? (contract.prices || []) : [];
+            
             StorageManager.update('contracts', id, {
                 name: name,
                 status: document.getElementById('contract-status').value,
                 address: document.getElementById('contract-address').value.trim(),
                 employer: document.getElementById('contract-employer').value.trim(),
                 manager: document.getElementById('contract-manager').value.trim(),
-                phone: document.getElementById('contract-phone').value.trim()
+                phone: document.getElementById('contract-phone').value.trim(),
+                prices: existingPrices
             });
             
             UIUtils.showToast('项目更新成功', 'success');
