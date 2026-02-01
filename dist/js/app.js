@@ -39,7 +39,13 @@ var StorageManager = {
             equipmentInventory: [],
             contracts: [],
             transferRecords: [],
-            workRecords: []
+            workRecords: [],
+            priceTypes: [
+                { id: 1, name: '吊装水泥块', unit: '块' },
+                { id: 2, name: '吊装钢梁', unit: '根' },
+                { id: 3, name: '运输水泥块', unit: '块' },
+                { id: 4, name: '运输钢梁', unit: '根' }
+            ]
         };
     },
     
@@ -127,6 +133,83 @@ var StorageManager = {
     // 删除记录（带库存恢复逻辑）
     deleteRecord: function(type, id) {
         return this.delete(type, id);
+    },
+    
+    // ===== 单价类型管理 =====
+    
+    // 获取所有单价类型
+    getAllPriceTypes: function() {
+        var data = this.getAll();
+        return data.priceTypes || [];
+    },
+    
+    // 根据ID获取单价类型
+    getPriceTypeById: function(id) {
+        var data = this.getAll();
+        if (!data.priceTypes) return null;
+        
+        for (var i = 0; i < data.priceTypes.length; i++) {
+            if (data.priceTypes[i].id === id) {
+                return data.priceTypes[i];
+            }
+        }
+        return null;
+    },
+    
+    // 添加单价类型
+    addPriceType: function(item) {
+        var data = this.getAll();
+        if (!data.priceTypes) {
+            data.priceTypes = [];
+        }
+        
+        // 生成ID
+        var maxId = 0;
+        data.priceTypes.forEach(function(type) {
+            if (type.id > maxId) maxId = type.id;
+        });
+        item.id = maxId + 1;
+        item.createdAt = new Date().toISOString();
+        
+        data.priceTypes.push(item);
+        this.save(data);
+        return item;
+    },
+    
+    // 更新单价类型
+    updatePriceType: function(id, updates) {
+        var data = this.getAll();
+        if (!data.priceTypes) return false;
+        
+        for (var i = 0; i < data.priceTypes.length; i++) {
+            if (data.priceTypes[i].id === id) {
+                updates.updatedAt = new Date().toISOString();
+                Object.assign(data.priceTypes[i], updates);
+                this.save(data);
+                return true;
+            }
+        }
+        return false;
+    },
+    
+    // 删除单价类型
+    deletePriceType: function(id) {
+        var data = this.getAll();
+        if (!data.priceTypes) return false;
+        
+        var found = false;
+        for (var i = 0; i < data.priceTypes.length; i++) {
+            if (data.priceTypes[i].id === id) {
+                data.priceTypes.splice(i, 1);
+                found = true;
+                break;
+            }
+        }
+        
+        if (found) {
+            this.save(data);
+        }
+        return found;
     }
 };
 

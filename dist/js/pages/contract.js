@@ -31,8 +31,11 @@ var ContractPage = {
         
         // 项目列表
         html += '<div class="card"><div class="card-header"><h3 class="card-title">项目管理</h3>';
+        html += '<div style="display: flex; gap: 8px;">';
+        html += '<button class="btn btn-secondary" onclick="ContractPage.showPriceTypesModal()" style="display: flex; align-items: center; gap: 4px;">';
+        html += '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>单价类型</button>';
         html += '<button class="btn btn-primary" onclick="ContractPage.showAddModal()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>添加项目</button>';
-        html += '</div><div class="card-body">';
+        html += '</div></div><div class="card-body">';
         
         if (contracts.length === 0) {
             html += UIUtils.createEmptyState(
@@ -131,12 +134,8 @@ var ContractPage = {
         }
         
         var prices = contract.prices || [];
-        var priceTypes = [
-            { name: '吊装水泥块', unit: '块' },
-            { name: '吊装钢梁', unit: '根' },
-            { name: '运输水泥块', unit: '块' },
-            { name: '运输钢梁', unit: '根' }
-        ];
+        // 从StorageManager获取单价类型
+        var priceTypes = StorageManager.getAllPriceTypes();
         var priceTypeOptions = '';
         priceTypes.forEach(function(type) {
             priceTypeOptions += '<option value="' + type.name + '">' + type.name + ' (' + type.unit + ')</option>';
@@ -212,6 +211,140 @@ var ContractPage = {
         });
     },
     
+    // 单价类型管理
+    showPriceTypesModal: function() {
+        var priceTypes = StorageManager.getAllPriceTypes();
+        
+        var html = '<div style="margin-bottom: 20px;">';
+        html += '<h4 style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">';
+        html += '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>';
+        html += '单价类型管理</h4>';
+        
+        // 添加单价类型表单
+        html += '<div style="background: #f5f5f5; padding: 16px; border-radius: 8px; margin-bottom: 16px;">';
+        html += '<h5 style="margin-bottom: 12px;">添加新单价类型</h5>';
+        html += '<div class="form-row">';
+        html += '<div class="form-group"><label class="form-label">类型名称</label><input type="text" class="form-input" id="price-type-name" placeholder="如：吊装水泥块"></div>';
+        html += '<div class="form-group"><label class="form-label">单位</label><input type="text" class="form-input" id="price-type-unit" placeholder="如：块、根、次" style="width: 120px;"></div>';
+        html += '</div>';
+        html += '<button class="btn btn-primary" onclick="ContractPage.addPriceType()" style="margin-top: 8px;">添加类型</button>';
+        html += '</div>';
+        
+        // 单价类型列表
+        html += '<h5 style="margin-bottom: 12px; font-size: 14px; color: #666;">已配置的单价类型</h5>';
+        if (priceTypes.length === 0) {
+            html += '<p style="color: #999; padding: 20px; background: #fafafa; border-radius: 6px; text-align: center;">暂无单价类型</p>';
+        } else {
+            html += '<div class="table-container"><table><thead><tr><th>类型名称</th><th>单位</th><th>操作</th></tr></thead><tbody>';
+            priceTypes.forEach(function(type) {
+                html += '<tr>';
+                html += '<td>' + (type.name || '-') + '</td>';
+                html += '<td>' + (type.unit || '-') + '</td>';
+                html += '<td><div class="action-buttons">';
+                html += '<button class="action-btn action-btn-edit" onclick="ContractPage.editPriceType(' + type.id + ')">编辑</button>';
+                html += '<button class="action-btn action-btn-delete" onclick="ContractPage.deletePriceType(' + type.id + ')">删除</button>';
+                html += '</div></td>';
+                html += '</tr>';
+            });
+            html += '</tbody></table></div>';
+        }
+        
+        html += '</div>';
+        
+        ModalManager.open('单价类型管理', html, null);
+    },
+    
+    // 添加单价类型
+    addPriceType: function() {
+        var name = document.getElementById('price-type-name').value.trim();
+        var unit = document.getElementById('price-type-unit').value.trim();
+        
+        if (!name) {
+            UIUtils.showToast('请输入类型名称', 'warning');
+            return;
+        }
+        
+        if (!unit) {
+            UIUtils.showToast('请输入单位', 'warning');
+            return;
+        }
+        
+        // 检查是否已存在
+        var priceTypes = StorageManager.getAllPriceTypes();
+        var exists = false;
+        priceTypes.forEach(function(type) {
+            if (type.name === name) exists = true;
+        });
+        
+        if (exists) {
+            UIUtils.showToast('该类型名称已存在', 'warning');
+            return;
+        }
+        
+        StorageManager.addPriceType({
+            name: name,
+            unit: unit
+        });
+        
+        UIUtils.showToast('单价类型添加成功', 'success');
+        
+        // 清空输入框
+        document.getElementById('price-type-name').value = '';
+        document.getElementById('price-type-unit').value = '';
+        
+        // 刷新弹窗
+        ContractPage.showPriceTypesModal();
+    },
+    
+    // 编辑单价类型
+    editPriceType: function(id) {
+        var priceType = StorageManager.getPriceTypeById(id);
+        if (!priceType) {
+            UIUtils.showToast('单价类型不存在', 'error');
+            return;
+        }
+        
+        var content = '';
+        content += '<div class="form-row">';
+        content += '<div class="form-group"><label class="form-label required">类型名称</label><input type="text" class="form-input" id="edit-price-type-name" value="' + (priceType.name || '') + '"></div>';
+        content += '<div class="form-group"><label class="form-label required">单位</label><input type="text" class="form-input" id="edit-price-type-unit" value="' + (priceType.unit || '') + '" style="width: 120px;"></div>';
+        content += '</div>';
+        
+        ModalManager.open('编辑单价类型', content, function() {
+            var name = document.getElementById('edit-price-type-name').value.trim();
+            var unit = document.getElementById('edit-price-type-unit').value.trim();
+            
+            if (!name) {
+                UIUtils.showToast('请输入类型名称', 'warning');
+                return;
+            }
+            
+            if (!unit) {
+                UIUtils.showToast('请输入单位', 'warning');
+                return;
+            }
+            
+            if (StorageManager.updatePriceType(id, { name: name, unit: unit })) {
+                UIUtils.showToast('单价类型更新成功', 'success');
+                ContractPage.showPriceTypesModal();
+            } else {
+                UIUtils.showToast('更新失败', 'error');
+            }
+        });
+    },
+    
+    // 删除单价类型
+    deletePriceType: function(id) {
+        if (!confirm('确定要删除该单价类型吗？删除后已配置的单价仍会保留，但无法再添加新的该类型单价。')) return;
+        
+        if (StorageManager.deletePriceType(id)) {
+            UIUtils.showToast('单价类型删除成功', 'success');
+            ContractPage.showPriceTypesModal();
+        } else {
+            UIUtils.showToast('删除失败', 'error');
+        }
+    },
+    
     showPricesModal: function(id) {
         var contract = StorageManager.getById('contracts', id);
         if (!contract) {
@@ -221,14 +354,11 @@ var ContractPage = {
         
         var prices = contract.prices || [];
         
+        // 从StorageManager获取单价类型
+        var priceTypes = StorageManager.getAllPriceTypes();
+        
         // 单价类型选项
         var priceTypeOptions = '';
-        var priceTypes = [
-            { name: '吊装水泥块', unit: '块' },
-            { name: '吊装钢梁', unit: '根' },
-            { name: '运输水泥块', unit: '块' },
-            { name: '运输钢梁', unit: '根' }
-        ];
         priceTypes.forEach(function(type) {
             priceTypeOptions += '<option value="' + type.name + '">' + type.name + ' (' + type.unit + ')</option>';
         });
