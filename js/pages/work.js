@@ -9,10 +9,10 @@ var WorkPage = {
         var contracts = data.contracts || [];
         var priceTypes = StorageManager.getAllPriceTypes();
         
-        var today = new Date().toISOString().slice(0        
+        var today = new Date().toISOString().slice(0, 10);
+        
         var todayRecords = [];
-       , 10);
- workRecords.forEach(function(r) {
+        workRecords.forEach(function(r) {
             if (r.workDate === today || r.work_date === today) todayRecords.push(r);
         });
         
